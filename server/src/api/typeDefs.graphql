@@ -1,0 +1,59 @@
+type PhoneNumber {
+    uid: ID!
+    number: String!
+    extension: String
+    kind: String
+    otherKind: String
+    primary: Boolean
+}
+
+enum PhoneNumberKind {
+    MOBILE
+    HOME
+    WORK
+    FAX
+    PAGER
+    OTHER
+}
+
+type Person {
+    id: ID!
+    userId: ID
+    firstName: String
+    lastName: String
+    middleNames: [String]
+    nickNames: [String]
+    givenName: String
+    createdAt: String
+    updatedAt: String
+    title: String
+    # birthDate: DateTime
+    # birthPlace: PhysicalAddress
+    # deathDate: DateTime
+    # deathPlace: PhysicalAddress
+    height: Float
+    mass: Float
+    # gender: Gender
+    otherGender: String
+    # karyotype: Karyotype
+    # eyeColor: EyeColor
+    otherEyeColor: String
+    # hairColor: HairColor
+    otherHairColor: String
+    # handedness: Handedness
+    phoneNumbers: [PhoneNumber]
+    # emailAddresses: [EmailAddress]
+    # physicalAddresses: [PhysicalAddress]
+    # residencies: [Residency]
+    # creatorOfGroups: [Group]
+    # memberOfGroups: [Group]
+    # relationships: [Relationship]
+}
+
+type Query {
+    allPhoneNumbers: [PhoneNumber]
+}
+
+type Mutation {
+    createPhoneNumber: PhoneNumber
+}

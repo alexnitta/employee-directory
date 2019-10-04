@@ -1,0 +1,68 @@
+version: '3.2'
+services:
+
+  api:
+    depends_on:
+      - server
+      - zero
+    build: .
+    command: nodemon --watch src -e js,json,graphql src/api/index.js
+    networks:
+      - service_net
+    ports:
+      - '8001:8001'
+    volumes:
+      - ./src:/api/src
+
+  zero:
+    image: dgraph/dgraph:latest
+    networks:
+      - service_net
+    ports:
+      - 5080:5080
+      - 6080:6080
+    volumes:
+      - type: volume
+        source: dgraph
+        target: /dgraph
+        volume:
+          nocopy: true
+    restart: on-failure
+    command: dgraph zero --my=zero:5080
+
+  server:
+    image: dgraph/dgraph:latest
+    networks:
+      - service_net
+    ports:
+      - 8080:8080
+      - 9080:9080
+    volumes:
+      - type: volume
+        source: dgraph
+        target: /dgraph
+        volume:
+          nocopy: true
+    restart: on-failure
+    command: dgraph alpha --my=server:7080 --lru_mb=2048 --zero=zero:5080
+
+  ratel:
+    image: dgraph/dgraph:latest
+    networks:
+      - service_net
+    ports:
+      - 8000:8000
+    volumes:
+      - type: volume
+        source: dgraph
+        target: /dgraph
+        volume:
+          nocopy: true
+    command: dgraph-ratel
+
+
+networks:
+  service_net:
+
+volumes:
+  dgraph:

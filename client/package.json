@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "employee-directory-client",
   "version": "0.1.0",
-  "private": true,
+  "description": "A React / Redux UI for browsing a list of employees at an imaginary company",
   "dependencies": {
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -13,6 +13,16 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexnitta/employee-directory.git"
+  },
+  "author": "Alex Nitta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexnitta/employee-directory/issues"
+  },
+  "homepage": "https://github.com/alexnitta/employee-directory#readme",
   "eslintConfig": {
     "extends": "react-app"
   },
