@@ -1,5 +1,5 @@
-const createPhoneNumber = require('./createPhoneNumber');
+const createEmployee = require('./createEmployee');
 
 module.exports = {
-    createPhoneNumber,
+    createEmployee,
 };

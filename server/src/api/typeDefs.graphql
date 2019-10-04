@@ -1,59 +1,20 @@
-type PhoneNumber {
-    uid: ID!
-    number: String!
-    extension: String
-    kind: String
-    otherKind: String
-    primary: Boolean
+enum GenderKind {
+    FEMALE
+    MALE
 }
 
-enum PhoneNumberKind {
-    MOBILE
-    HOME
-    WORK
-    FAX
-    PAGER
-    OTHER
-}
-
-type Person {
-    id: ID!
-    userId: ID
+type Employee {
+    gender: GenderKind
+    title: String
     firstName: String
     lastName: String
-    middleNames: [String]
-    nickNames: [String]
-    givenName: String
-    createdAt: String
-    updatedAt: String
-    title: String
-    # birthDate: DateTime
-    # birthPlace: PhysicalAddress
-    # deathDate: DateTime
-    # deathPlace: PhysicalAddress
-    height: Float
-    mass: Float
-    # gender: Gender
-    otherGender: String
-    # karyotype: Karyotype
-    # eyeColor: EyeColor
-    otherEyeColor: String
-    # hairColor: HairColor
-    otherHairColor: String
-    # handedness: Handedness
-    phoneNumbers: [PhoneNumber]
-    # emailAddresses: [EmailAddress]
-    # physicalAddresses: [PhysicalAddress]
-    # residencies: [Residency]
-    # creatorOfGroups: [Group]
-    # memberOfGroups: [Group]
-    # relationships: [Relationship]
+    email: String
 }
 
 type Query {
-    allPhoneNumbers: [PhoneNumber]
+    allEmployees: [Employee]
 }
 
 type Mutation {
-    createPhoneNumber: PhoneNumber
+    createEmployee: Employee
 }

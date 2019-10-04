@@ -1,64 +1,69 @@
 const dgraph = require("dgraph-js");
 
 const utils = require('./utils');
+const seedData10 = require('./seedData10.json');
 
 const { newClientStub, newClient, dropAll, setSchema } = utils;
 
-// TODO: set this up with actual test data once the schema is more complete
-// https://github.com/alexnitta/sb-sequoia/issues/4
-async function createData(dgraphClient) {
-    // Create a new transaction.
-    const txn = dgraphClient.newTxn();
-    try {
-        // Create data.
-        const phoneNumber = {
-            typePhoneNumber: '',
-            number: '8314190769',
-            extension: '',
-            primary: true,
+/**
+ * Map over seedData.results and create a list of objects that will be used to populate Dgraph.
+ * `seedData` is the JSON response from https://randomuser.me/api/?results=500
+ */
+const cleanSeedData = seedData =>
+    seedData.results.map(person => {
+        const {
+            name: {
+                first: firstName,
+                title,
+                last: lastName,
+            },
+            email,
+        } = person;
+
+        const gender = person.gender.toUpperCase();
+
+        return {
+            firstName,
+            lastName,
+            gender,
+            title,
+            email,
         };
+    });
 
-        // Run mutation.
+async function createData(dgraphClient) {
+    // TODO use seedData500 instead
+    const cleanData = cleanSeedData(seedData10);
+    const txn = dgraphClient.newTxn();
+
+    // TODO iterate through cleanData and do this once per employee
+    try {
+        const employee = cleanData[0];
         const mu = new dgraph.Mutation();
-        mu.setSetJson(phoneNumber);
+        mu.setSetJson(employee);
         const assigned = await txn.mutate(mu);
-
-        // Commit transaction.
         await txn.commit();
-
-        // Get uid of the outermost object.
-        // Assigned#getUidsMap() returns a map from blank node names to uids.
-        // For a json mutation, blank node names "blank-0", "blank-1", ... are used
-        // for all the created nodes.
-        console.log(`Created phoneNumber with uid = ${assigned.getUidsMap().get("blank-0")}\n`);
-        console.log("All created nodes (map from blank node names to uids):");
-        assigned.getUidsMap().forEach((uid, key) => console.log(`${key} => ${uid}`));
     } finally {
-        // Clean up. Calling this after txn.commit() is a no-op
-        // and hence safe.
         await txn.discard();
     }
 }
 
-// Query for data.
 async function queryData(dgraphClient) {
-    // Run query.
     const query = `
         {
-            allPhoneNumbers(func: has(typePhoneNumber)) {
+            allEmployees(func: has(typeEmployee)) {
                 uid
-                number
-                extension
-                primary
+                firstName
+                lastName
+                gender
+                email
             }
         }
     `;
     const res = await dgraphClient.newTxn().query(query);
-    const phoneNumbers = res.getJson();
+    const employees = res.getJson();
 
-    // Print results.
-    console.log(`Number of phoneNumbers: ${phoneNumbers.allPhoneNumbers.length}`);
-    phoneNumbers.allPhoneNumbers.forEach((phoneNumber) => console.log(phoneNumber));
+    console.log(`Queried ${employees.allEmployees.length} employees: `);
 }
 
 async function main() {
@@ -69,7 +74,6 @@ async function main() {
     await createData(dgraphClient);
     await queryData(dgraphClient);
 
-    // Close the client stub.
     dgraphClientStub.close();
 }
 

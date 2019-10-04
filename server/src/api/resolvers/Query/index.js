@@ -1,5 +1,5 @@
-const allPhoneNumbers = require('./allPhoneNumbers');
+const allEmployees = require('./allEmployees');
 
 module.exports = {
-    allPhoneNumbers,
+    allEmployees,
 };
