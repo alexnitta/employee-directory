@@ -14,3 +14,7 @@ The app is split into `client` and `server` directories. `client` contains the f
 ### Starting up the `server`
 
 TODO
+
+## Contributing
+
+See notes on using prettier to format code: [_docs/prettier.md](_docs/prettier.md).
