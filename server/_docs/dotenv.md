@@ -15,5 +15,5 @@ GRAPHQL_PORT=8001
 # If running DGraph locally, it would be "localhost".
 # In production, it will be a deployed hostname.
 DGRAPH_HOST=host.docker.internal
-DGRAPH_PORT=8080
+DGRAPH_PORT=9080
 ```
