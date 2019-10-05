@@ -12,10 +12,19 @@ type Employee {
     email: String
 }
 
+input EmployeeInput {
+    "One of ['MALE', 'FEMALE']"
+    gender: GenderKind
+    title: String
+    firstName: String
+    lastName: String
+    email: String
+}
+
 type Query {
     allEmployees: [Employee]
 }
 
 type Mutation {
-    createEmployee: Employee
+    createEmployee(input: EmployeeInput): Employee
 }
