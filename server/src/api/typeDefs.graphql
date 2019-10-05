@@ -4,6 +4,7 @@ enum GenderKind {
 }
 
 type Employee {
+    uid: ID
     gender: GenderKind
     title: String
     firstName: String

@@ -9,6 +9,7 @@ const dgraphHost = process.env.DGRAPH_HOST || 'localhost';
 
 // Create a client stub.
 function newClientStub() {
+    console.log('connecting on dgraphPort:', dgraphPort)
     return new dgraph.DgraphClientStub(
         `${dgraphHost}:${dgraphPort}`, grpc.credentials.createInsecure());
 }
