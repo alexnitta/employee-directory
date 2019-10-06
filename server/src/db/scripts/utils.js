@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-const dgraph = require("dgraph-js");
-const grpc = require("grpc");
+const dgraph = require('dgraph-js');
+const grpc = require('grpc');
 const schema = require('../schema');
 
 const dgraphPort = process.env.DGRAPH_PORT || 9080;
@@ -9,9 +9,11 @@ const dgraphHost = process.env.DGRAPH_HOST || 'localhost';
 
 // Create a client stub.
 function newClientStub() {
-    console.log('connecting on dgraphPort:', dgraphPort)
+    console.log('connecting on dgraphPort:', dgraphPort);
     return new dgraph.DgraphClientStub(
-        `${dgraphHost}:${dgraphPort}`, grpc.credentials.createInsecure());
+        `${dgraphHost}:${dgraphPort}`,
+        grpc.credentials.createInsecure()
+    );
 }
 
 // Create a client.

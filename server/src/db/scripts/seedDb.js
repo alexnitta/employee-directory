@@ -1,4 +1,4 @@
-const dgraph = require("dgraph-js");
+const dgraph = require('dgraph-js');
 
 const utils = require('./utils');
 const seedData500 = require('./seedData500.json');
@@ -12,11 +12,7 @@ const { newClientStub, newClient, dropAll, setSchema } = utils;
 const cleanSeedData = seedData =>
     seedData.results.map(person => {
         const {
-            name: {
-                first: firstName,
-                title,
-                last: lastName,
-            },
+            name: { first: firstName, title, last: lastName },
             email,
         } = person;
 
@@ -41,15 +37,15 @@ async function createData(dgraphClient) {
     for (const employee of cleanData) {
         const txn = dgraphClient.newTxn();
         try {
-          const mu = new dgraph.Mutation();
+            const mu = new dgraph.Mutation();
 
-          mu.setSetJson(employee);
+            mu.setSetJson(employee);
 
-          const assigned = await txn.mutate(mu);
+            const assigned = await txn.mutate(mu);
 
-          await txn.commit();
+            await txn.commit();
         } finally {
-          await txn.discard();
+            await txn.discard();
         }
     }
 }
@@ -72,7 +68,9 @@ async function queryData(dgraphClient) {
     const res = await dgraphClient.newTxn().query(query);
     const employees = res.getJson();
 
-    console.log(`Created and then queried ${employees.allEmployees.length} employees`);
+    console.log(
+        `Created and then queried ${employees.allEmployees.length} employees`
+    );
 }
 
 async function main() {
@@ -86,8 +84,10 @@ async function main() {
     dgraphClientStub.close();
 }
 
-main().then(() => {
-    console.log("\nDone seeding Dgraph.");
-}).catch((e) => {
-    console.log("Error seeding Dgraph: ", e);
-});
+main()
+    .then(() => {
+        console.log('\nDone seeding Dgraph.');
+    })
+    .catch(e => {
+        console.log('Error seeding Dgraph: ', e);
+    });

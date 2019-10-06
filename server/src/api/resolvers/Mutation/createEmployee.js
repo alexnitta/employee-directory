@@ -5,8 +5,7 @@ async function createEmployee(parentValue, args, context) {
     const mutation = new dgraph.Mutation();
     const employee = { ...args.input };
 
-    employee.uid = '_:employeeId',
-    employee.typeEmployee = '';
+    (employee.uid = '_:employeeId'), (employee.typeEmployee = '');
 
     mutation.setSetJson(employee);
 

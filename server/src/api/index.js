@@ -2,10 +2,11 @@ require('dotenv').config();
 
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
-const expressPlayground = require('graphql-playground-middleware-express').default
-const dgraph = require("dgraph-js");
-const grpc = require("grpc");
-const { readFileSync } = require('fs')
+const expressPlayground = require('graphql-playground-middleware-express')
+    .default;
+const dgraph = require('dgraph-js');
+const grpc = require('grpc');
+const { readFileSync } = require('fs');
 
 const graphqlPort = process.env.GRAPHQL_PORT || 4000;
 const dgraphPort = process.env.DGRAPH_PORT || 9080;
@@ -18,7 +19,7 @@ const resolvers = require('./resolvers');
 
 const clientStub = new dgraph.DgraphClientStub(
     `${dgraphHost}:${dgraphPort}`,
-    grpc.credentials.createInsecure(),
+    grpc.credentials.createInsecure()
 );
 const dgraphClient = new dgraph.DgraphClient(clientStub);
 
@@ -35,12 +36,17 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 if (showPlayground) {
-    app.get('/playground', expressPlayground({ endpoint: graphqlPath }))
+    app.get('/playground', expressPlayground({ endpoint: graphqlPath }));
 }
 
-app.listen({
-    port: graphqlPort,
-    path: graphqlPath
-}, () => {
-    console.log(`Running a GraphQL API server at localhost:${graphqlPort}${graphqlPath}`);
-});
+app.listen(
+    {
+        port: graphqlPort,
+        path: graphqlPath,
+    },
+    () => {
+        console.log(
+            `Running a GraphQL API server at localhost:${graphqlPort}${graphqlPath}`
+        );
+    }
+);

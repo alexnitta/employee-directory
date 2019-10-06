@@ -12,8 +12,10 @@ async function main() {
     dgraphClientStub.close();
 }
 
-main().then(() => {
-    console.log("\nDone initializing Dgraph.");
-}).catch((e) => {
-    console.log("Error initializing Dgraph: ", e);
-});
+main()
+    .then(() => {
+        console.log('\nDone initializing Dgraph.');
+    })
+    .catch(e => {
+        console.log('Error initializing Dgraph: ', e);
+    });
