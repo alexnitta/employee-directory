@@ -4,8 +4,8 @@
   "description": "A backend that exposes a list of employees at an imaginary company, using Express, GraphQL and Dgraph",
   "main": "src/api/index.js",
   "scripts": {
-    "init-db": "node ./src/db/scripts/initDb.js",
-    "seed-db": "node ./src/db/scripts/seedDb.js",
+    "init-db": "babel-node ./src/db/scripts/initDb.js",
+    "seed-db": "babel-node ./src/db/scripts/seedDb.js",
     "start": "nodemon --watch src -e js,json,graphql --exec babel-node src/api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
