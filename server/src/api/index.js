@@ -9,7 +9,7 @@ import * as dgraph from 'dgraph-js';
 import * as grpc from 'grpc';
 import { readFileSync } from 'fs';
 
-import { resolvers } from './resolvers';
+import * as resolvers from './resolvers';
 
 const graphqlPort = process.env.GRAPHQL_PORT || 4000;
 const dgraphPort = process.env.DGRAPH_PORT || 9080;
