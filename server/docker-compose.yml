@@ -6,7 +6,7 @@ services:
       - server
       - zero
     build: .
-    command: nodemon --watch src -e js,json,graphql src/api/index.js
+    command: nodemon --watch src -e js,json,graphql --exec babel-node src/api/index.js
     networks:
       - service_net
     ports:

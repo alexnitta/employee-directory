@@ -1,5 +1,3 @@
-const allEmployees = require('./allEmployees');
+import { allEmployees } from './allEmployees';
 
-module.exports = {
-    allEmployees,
-};
+export { allEmployees };

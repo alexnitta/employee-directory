@@ -1,8 +1,11 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 
-const dgraph = require('dgraph-js');
-const grpc = require('grpc');
-const schema = require('../schema');
+dotenv.config();
+
+import * as dgraph from 'dgraph-js';
+import * as grpc from 'grpc';
+
+import { schema } from '../schema';
 
 const dgraphPort = process.env.DGRAPH_PORT || 9080;
 const dgraphHost = process.env.DGRAPH_HOST || 'localhost';
@@ -35,9 +38,4 @@ async function setSchema(dgraphClient) {
     await dgraphClient.alter(op);
 }
 
-module.exports = {
-    newClientStub,
-    newClient,
-    dropAll,
-    setSchema,
-};
+export { newClientStub, newClient, dropAll, setSchema };

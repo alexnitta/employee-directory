@@ -16,4 +16,4 @@ async function allEmployees(parentValue, args, context) {
     return response.getJson().allEmployees;
 }
 
-module.exports = allEmployees;
+export { allEmployees };

@@ -1,12 +1,15 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 
-const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
-const expressPlayground = require('graphql-playground-middleware-express')
-    .default;
-const dgraph = require('dgraph-js');
-const grpc = require('grpc');
-const { readFileSync } = require('fs');
+dotenv.config();
+
+import express from 'express';
+import { ApolloServer, gql } from 'apollo-server-express';
+import expressPlayground from 'graphql-playground-middleware-express';
+import * as dgraph from 'dgraph-js';
+import * as grpc from 'grpc';
+import { readFileSync } from 'fs';
+
+import { resolvers } from './resolvers';
 
 const graphqlPort = process.env.GRAPHQL_PORT || 4000;
 const dgraphPort = process.env.DGRAPH_PORT || 9080;
@@ -15,7 +18,6 @@ const showPlayground = process.env.ENV === 'development';
 const graphqlPath = '/graphql';
 
 const typeDefs = gql(readFileSync('src/api/typeDefs.graphql', 'UTF-8'));
-const resolvers = require('./resolvers');
 
 const clientStub = new dgraph.DgraphClientStub(
     `${dgraphHost}:${dgraphPort}`,

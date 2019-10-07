@@ -10,7 +10,7 @@
 // for all the nodes that have that predicate in a query with the `has` function.
 // See: https://docs.dgraph.io/howto/#giving-nodes-a-type
 
-module.exports = `
+export const schema = `
     typeEmployee: string .
     firstName: string .
     lastName: string .

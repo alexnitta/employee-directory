@@ -1,4 +1,4 @@
-const dgraph = require('dgraph-js');
+import * as dgraph from 'dgraph-js';
 
 async function createEmployee(parentValue, args, context) {
     const transaction = context.db.newTxn();
@@ -20,4 +20,4 @@ async function createEmployee(parentValue, args, context) {
     return employee;
 }
 
-module.exports = createEmployee;
+export { createEmployee };

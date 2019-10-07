@@ -1,9 +1,7 @@
-const dgraph = require('dgraph-js');
+import * as dgraph from 'dgraph-js';
 
-const utils = require('./utils');
-const seedData500 = require('./seedData500.json');
-
-const { newClientStub, newClient, dropAll, setSchema } = utils;
+import { newClientStub, newClient, dropAll, setSchema } from './utils';
+import seedData500 from './seedData500.json';
 
 /**
  * Map over seedData.results and create a list of objects that will be used to populate Dgraph.

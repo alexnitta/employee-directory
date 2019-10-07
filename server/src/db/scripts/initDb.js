@@ -1,6 +1,4 @@
-const utils = require('./utils');
-
-const { newClientStub, newClient, dropAll, setSchema } = utils;
+import { newClientStub, newClient, dropAll, setSchema } from './utils';
 
 async function main() {
     const dgraphClientStub = newClientStub();
