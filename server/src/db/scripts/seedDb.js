@@ -1,6 +1,7 @@
 import * as dgraph from 'dgraph-js';
 
 import { newClientStub, newClient, dropAll, setSchema } from './utils';
+import seedData10 from './seedData10.json';
 import seedData500 from './seedData500.json';
 
 /**
@@ -12,6 +13,25 @@ const cleanSeedData = seedData =>
         const {
             name: { first: firstName, title, last: lastName },
             email,
+            location: {
+                street: { number: streetNumber, name: streetName },
+                city,
+                state,
+                country,
+                coordinates: { latitude, longitude },
+                timezone: {
+                    offset: timezoneOffset,
+                    description: timezoneDescription,
+                },
+            },
+            phone,
+            cell,
+            picture: {
+                large: pictureLarge,
+                medium: pictureMedium,
+                thumbnail: pictureThumbnail,
+            },
+            nat,
         } = person;
 
         const gender = person.gender.toUpperCase();
@@ -23,6 +43,13 @@ const cleanSeedData = seedData =>
             gender,
             title,
             email,
+            location: [
+                {
+                    typeLocation: '',
+                    streetNumber,
+                    streetName,
+                },
+            ],
         };
     });
 
@@ -30,7 +57,7 @@ const cleanSeedData = seedData =>
  * Using cleaned seed data, populate Dgraph with list of 500 employees
  */
 async function createData(dgraphClient) {
-    const cleanData = cleanSeedData(seedData500);
+    const cleanData = cleanSeedData(seedData10);
 
     for (const employee of cleanData) {
         const txn = dgraphClient.newTxn();
@@ -60,6 +87,7 @@ async function queryData(dgraphClient) {
                 lastName
                 gender
                 email
+                location
             }
         }
     `;

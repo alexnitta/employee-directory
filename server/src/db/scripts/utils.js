@@ -21,7 +21,10 @@ function newClientStub() {
 
 // Create a client.
 function newClient(clientStub) {
-    return new dgraph.DgraphClient(clientStub);
+    const dgraphClient = new dgraph.DgraphClient(clientStub);
+    // dgraphClient.setDebugMode(true);
+
+    return dgraphClient;
 }
 
 // Drop All - discard all data and start from a clean slate.

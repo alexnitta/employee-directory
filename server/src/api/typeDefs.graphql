@@ -10,8 +10,10 @@ type Employee {
     firstName: String
     lastName: String
     email: String
+    location: [Location]
 }
 
+# The enum options are not the developer's viewpoint on gender, just the state of the data in https://randomuser.me/api/
 input EmployeeInput {
     "One of ['MALE', 'FEMALE']"
     gender: GenderKind
@@ -19,6 +21,12 @@ input EmployeeInput {
     firstName: String
     lastName: String
     email: String
+}
+
+type Location {
+    uid: ID
+    streetNumber: Int
+    streetName: String
 }
 
 type Query {

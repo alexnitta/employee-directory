@@ -8,6 +8,11 @@ async function allEmployees(parentValue, args, context) {
                 title
                 gender
                 email
+                location {
+                    uid
+                    streetName
+                    streetNumber
+                }
             }
         }
     `;
