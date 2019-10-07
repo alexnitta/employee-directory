@@ -18,6 +18,12 @@ export const schema = `
         gender: string
         title: string
         email: string
+        phone: string
+        cell: string
+        pictureLarge: string
+        pictureMedium: string
+        pictureThumbnail: string
+        nat: string
         location: [uid]
     }
 
@@ -41,6 +47,12 @@ export const schema = `
     gender: string .
     title: string .
     email: string @index(exact) @upsert .
+    phone: string .
+    cell: string .
+    pictureLarge: string .
+    pictureMedium: string .
+    pictureThumbnail: string .
+    nat: string .
     location: [uid] .
 
     typeLocation: string .

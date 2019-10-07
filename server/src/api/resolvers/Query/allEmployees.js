@@ -8,10 +8,24 @@ async function allEmployees(parentValue, args, context) {
                 title
                 gender
                 email
+                phone
+                cell
+                pictureLarge
+                pictureMedium
+                pictureThumbnail
+                nat
                 location {
                     uid
                     streetName
                     streetNumber
+                    city
+                    state
+                    country
+                    postcode
+                    latitude
+                    longitude
+                    timezoneOffset
+                    timezoneDescription
                 }
             }
         }

@@ -43,11 +43,26 @@ const cleanSeedData = seedData =>
             gender,
             title,
             email,
+            phone,
+            cell,
+            pictureLarge,
+            pictureMedium,
+            pictureThumbnail,
+            nat,
             location: [
                 {
                     typeLocation: '',
                     streetNumber,
                     streetName,
+                    city,
+                    state,
+                    country,
+                    // US postal codes can start with 0
+                    postcode: person.location.postcode.toString(),
+                    latitude,
+                    longitude,
+                    timezoneOffset,
+                    timezoneDescription,
                 },
             ],
         };
