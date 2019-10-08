@@ -7,8 +7,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
-    "rendition": "^11.21.0",
-    "styled-components": "^4.4.0"
+    "rendition": "^11.21.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-macros": "^2.6.1"
   }
 }
