@@ -8,4 +8,7 @@ export const messages = {
             },
         },
     },
+    employeeSearch: {
+        placeholder: 'Search for an employee',
+    },
 };
