@@ -6,7 +6,7 @@ import seedData500 from './seedData500.json';
 
 const getRandomIndex = inputArray => Math.ceil(Math.random() * inputArray.length - 1);
 
-const generateDepartmentAndJobTitle = () => {
+const generateCompanyDetails = () => {
     const departmentsAndJobTitles = [
         {
             department: 'SALES',
@@ -39,12 +39,14 @@ const generateDepartmentAndJobTitle = () => {
             ],
         },
     ];
+    const officeLocations = ['LONDON', 'KYOTO', 'SAN_FRANCISCO', 'PARIS', 'RIGA'];
 
     const { department, jobTitles } =
         departmentsAndJobTitles[getRandomIndex(departmentsAndJobTitles)];
     const jobTitle = jobTitles[getRandomIndex(jobTitles)];
+    const officeLocation = officeLocations[getRandomIndex(officeLocations)];
 
-    return { department, jobTitle };
+    return { department, jobTitle, officeLocation };
 }
 
 /**
@@ -79,7 +81,7 @@ const cleanSeedData = seedData => {
         } = person;
 
         const gender = person.gender.toUpperCase();
-        const { department, jobTitle } = generateDepartmentAndJobTitle();
+        const { department, jobTitle, officeLocation } = generateCompanyDetails();
 
         return {
             typeEmployee: '',
@@ -96,6 +98,7 @@ const cleanSeedData = seedData => {
             nat,
             department,
             jobTitle,
+            officeLocation,
             location: [
                 {
                     typeLocation: '',
@@ -159,6 +162,7 @@ async function queryData(dgraphClient) {
                 nat
                 department
                 jobTitle
+                officeLocation
                 location {
                     uid
                     streetName

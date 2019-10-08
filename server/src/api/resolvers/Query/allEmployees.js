@@ -16,6 +16,7 @@ async function allEmployees(parentValue, args, context) {
                 nat
                 department
                 jobTitle
+                officeLocation
                 location {
                     uid
                     streetName
