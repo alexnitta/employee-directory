@@ -2,6 +2,7 @@ import React from 'react';
 import get from 'lodash/get';
 import { Table } from 'rendition';
 
+import { departmentEnumToString, officeLocationEnumToString } from './util';
 import sampleData from './sampleData.json';
 import { messages } from '../../locale/en_us';
 
@@ -46,8 +47,10 @@ const columns = [
 export const EmployeeDetails = () => {
     // TODO delete sampleData.json and get this from the API
     const data = sampleData.data.allEmployees.map(employee => {
-        const { uid, firstName, lastName, email, phone, jobTitle, department, officeLocation } = employee;
+        const { uid, firstName, lastName, email, phone, jobTitle } = employee;
         const fullName = `${firstName} ${lastName}`;
+        const department = departmentEnumToString(employee.department);
+        const officeLocation = officeLocationEnumToString(employee.officeLocation);
         const locationData = get(employee, ['location', 0], {});
         let { city, state, country } = locationData;
 
