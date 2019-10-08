@@ -2,309 +2,184 @@
     "data": {
         "allEmployees": [
             {
-                "uid": "0x273a",
-                "gender": "FEMALE",
-                "title": "Ms",
                 "firstName": "Fatma",
                 "lastName": "Yazıcı",
                 "email": "Fatma.Yazici@example.com",
-                "phone": "(085)-783-5417",
-                "cell": "(241)-486-1997",
-                "pictureLarge": "https://randomuser.me/api/portraits/women/26.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/women/26.jpg",
+                "department": "FINANCE",
+                "jobTitle": "Bookkeeper",
+                "officeLocation": "RIGA",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/women/26.jpg",
-                "nat": "TR",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/women/26.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/women/26.jpg",
                 "location": [
                     {
-                        "uid": "0x2739",
-                        "streetNumber": 434,
-                        "streetName": "Kushimoto Sk",
                         "city": "Karaman",
                         "state": "Burdur",
-                        "country": "Turkey",
-                        "postcode": "54902",
-                        "latitude": "74.2296",
-                        "longitude": "63.0403",
-                        "timezoneOffset": "+2:00",
-                        "timezoneDescription": "Kaliningrad, South Africa"
+                        "country": "Turkey"
                     }
                 ]
             },
             {
-                "uid": "0x273b",
-                "gender": "MALE",
-                "title": "Mr",
                 "firstName": "Bob",
                 "lastName": "George",
                 "email": "Bob.George@example.com",
-                "phone": "03-3239-6476",
-                "cell": "0413-923-228",
-                "pictureLarge": "https://randomuser.me/api/portraits/men/41.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/men/41.jpg",
+                "department": "SALES",
+                "jobTitle": "Sales Lead",
+                "officeLocation": "KYOTO",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/men/41.jpg",
-                "nat": "AU",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/men/41.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/men/41.jpg",
                 "location": [
                     {
-                        "uid": "0x273c",
-                        "streetNumber": 1792,
-                        "streetName": "First Street",
                         "city": "Warrnambool",
                         "state": "Western Australia",
-                        "country": "Australia",
-                        "postcode": "8917",
-                        "latitude": "-8.0548",
-                        "longitude": "-114.8263",
-                        "timezoneOffset": "-10:00",
-                        "timezoneDescription": "Hawaii"
+                        "country": "Australia"
                     }
                 ]
             },
             {
-                "uid": "0x273d",
-                "gender": "MALE",
-                "title": "Mr",
                 "firstName": "Ray",
                 "lastName": "Baker",
                 "email": "Ray.Baker@example.com",
-                "phone": "(521)-089-9590",
-                "cell": "(796)-228-6795",
-                "pictureLarge": "https://randomuser.me/api/portraits/men/21.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/men/21.jpg",
+                "department": "ENGINEERING",
+                "jobTitle": "Junior Software Engineer",
+                "officeLocation": "KYOTO",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/men/21.jpg",
-                "nat": "US",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/men/21.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/men/21.jpg",
                 "location": [
                     {
-                        "uid": "0x273e",
-                        "streetNumber": 9330,
-                        "streetName": "Blossom Hill Rd",
                         "city": "North Valley",
                         "state": "Michigan",
-                        "country": "United States",
-                        "postcode": "14256",
-                        "latitude": "-58.5210",
-                        "longitude": "106.2045",
-                        "timezoneOffset": "+4:30",
-                        "timezoneDescription": "Kabul"
+                        "country": "United States"
                     }
                 ]
             },
             {
-                "uid": "0x2740",
-                "gender": "MALE",
-                "title": "Mr",
                 "firstName": "Isac",
                 "lastName": "Otterstad",
                 "email": "Isac.Otterstad@example.com",
-                "phone": "53928232",
-                "cell": "42767817",
-                "pictureLarge": "https://randomuser.me/api/portraits/men/12.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/men/12.jpg",
+                "department": "FINANCE",
+                "jobTitle": "Controller",
+                "officeLocation": "SAN_FRANCISCO",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/men/12.jpg",
-                "nat": "NO",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/men/12.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/men/12.jpg",
                 "location": [
                     {
-                        "uid": "0x273f",
-                        "streetNumber": 9433,
-                        "streetName": "Schiøtts vei",
                         "city": "Hjelset",
                         "state": "Telemark",
-                        "country": null,
-                        "postcode": "8921",
-                        "latitude": "-39.2709",
-                        "longitude": "103.9223",
-                        "timezoneOffset": "+11:00",
-                        "timezoneDescription": "Magadan, Solomon Islands, New Caledonia"
+                        "country": null
                     }
                 ]
             },
             {
-                "uid": "0x2742",
-                "gender": "FEMALE",
-                "title": "Ms",
                 "firstName": "Saana",
                 "lastName": "Toro",
                 "email": "Saana.Toro@example.com",
-                "phone": "08-661-822",
-                "cell": "044-504-05-29",
-                "pictureLarge": "https://randomuser.me/api/portraits/women/82.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/women/82.jpg",
+                "department": "ENGINEERING",
+                "jobTitle": "Junior Software Engineer",
+                "officeLocation": "PARIS",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/women/82.jpg",
-                "nat": "FI",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/women/82.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/women/82.jpg",
                 "location": [
                     {
-                        "uid": "0x2741",
-                        "streetNumber": 6212,
-                        "streetName": "Hämeentie",
                         "city": "Mäntsälä",
                         "state": "Southern Savonia",
-                        "country": "Finland",
-                        "postcode": "75359",
-                        "latitude": "-74.5523",
-                        "longitude": "92.4764",
-                        "timezoneOffset": "-12:00",
-                        "timezoneDescription": "Eniwetok, Kwajalein"
+                        "country": "Finland"
                     }
                 ]
             },
             {
-                "uid": "0x2743",
-                "gender": "FEMALE",
-                "title": "Ms",
                 "firstName": "Celin",
                 "lastName": "Wennberg",
                 "email": "Celin.Wennberg@example.com",
-                "phone": "27469604",
-                "cell": "90797165",
-                "pictureLarge": "https://randomuser.me/api/portraits/women/63.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/women/63.jpg",
+                "department": "ENGINEERING",
+                "jobTitle": "Senior Software Engineer",
+                "officeLocation": "KYOTO",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/women/63.jpg",
-                "nat": "NO",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/women/63.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/women/63.jpg",
                 "location": [
                     {
-                        "uid": "0x2744",
-                        "streetNumber": 6149,
-                        "streetName": "Langåsveien",
                         "city": "Hausvik",
                         "state": "Sogn og Fjordane",
-                        "country": null,
-                        "postcode": "5566",
-                        "latitude": "73.4919",
-                        "longitude": "136.7386",
-                        "timezoneOffset": "+3:00",
-                        "timezoneDescription": "Baghdad, Riyadh, Moscow, St. Petersburg"
+                        "country": null
                     }
                 ]
             },
             {
-                "uid": "0x2746",
-                "gender": "FEMALE",
-                "title": "Mrs",
                 "firstName": "Henrike",
                 "lastName": "Andresen",
                 "email": "Henrike.Andresen@example.com",
-                "phone": "0569-7654194",
-                "cell": "0171-1806441",
-                "pictureLarge": "https://randomuser.me/api/portraits/women/80.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/women/80.jpg",
+                "department": "FINANCE",
+                "jobTitle": "Bookkeeper",
+                "officeLocation": "RIGA",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/women/80.jpg",
-                "nat": "DE",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/women/80.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/women/80.jpg",
                 "location": [
                     {
-                        "uid": "0x2745",
-                        "streetNumber": 5523,
-                        "streetName": "Kapellenweg",
                         "city": "Artern/Unstrut",
                         "state": "Sachsen",
-                        "country": "Germany",
-                        "postcode": "68503",
-                        "latitude": "60.8800",
-                        "longitude": "148.2926",
-                        "timezoneOffset": "-6:00",
-                        "timezoneDescription": "Central Time (US & Canada), Mexico City"
+                        "country": "Germany"
                     }
                 ]
             },
             {
-                "uid": "0x2747",
-                "gender": "MALE",
-                "title": "Mr",
                 "firstName": "Adam",
                 "lastName": "Lo",
                 "email": "Adam.Lo@example.com",
-                "phone": "106-838-2058",
-                "cell": "581-742-9747",
-                "pictureLarge": "https://randomuser.me/api/portraits/men/39.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/men/39.jpg",
+                "department": "ENGINEERING",
+                "jobTitle": "Staff Software Engineer",
+                "officeLocation": "RIGA",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/men/39.jpg",
-                "nat": "CA",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/men/39.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/men/39.jpg",
                 "location": [
                     {
-                        "uid": "0x2748",
-                        "streetNumber": 2805,
-                        "streetName": "Parliament St",
                         "city": "Chelsea",
                         "state": "Nova Scotia",
-                        "country": "Canada",
-                        "postcode": "N0F 8S5",
-                        "latitude": "-80.8111",
-                        "longitude": "-32.6154",
-                        "timezoneOffset": "-9:00",
-                        "timezoneDescription": "Alaska"
+                        "country": "Canada"
                     }
                 ]
             },
             {
-                "uid": "0x2749",
-                "gender": "FEMALE",
-                "title": "Miss",
                 "firstName": "Aline",
                 "lastName": "Moreira",
                 "email": "Aline.Moreira@example.com",
-                "phone": "(25) 4513-6664",
-                "cell": "(42) 5920-3374",
-                "pictureLarge": "https://randomuser.me/api/portraits/women/23.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/women/23.jpg",
+                "department": "SALES",
+                "jobTitle": "Sales Associate",
+                "officeLocation": "SAN_FRANCISCO",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/women/23.jpg",
-                "nat": "BR",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/women/23.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/women/23.jpg",
                 "location": [
                     {
-                        "uid": "0x274a",
-                        "streetNumber": 3745,
-                        "streetName": "Rua Dom Pedro Ii ",
                         "city": "Araçatuba",
                         "state": "Tocantins",
-                        "country": "Brazil",
-                        "postcode": "64544",
-                        "latitude": "3.6049",
-                        "longitude": "55.6124",
-                        "timezoneOffset": "+6:00",
-                        "timezoneDescription": "Almaty, Dhaka, Colombo"
+                        "country": "Brazil"
                     }
                 ]
             },
             {
-                "uid": "0x274b",
-                "gender": "FEMALE",
-                "title": "Miss",
                 "firstName": "Lucy",
                 "lastName": "Beck",
                 "email": "Lucy.Beck@example.com",
-                "phone": "041-672-2895",
-                "cell": "081-768-6840",
-                "pictureLarge": "https://randomuser.me/api/portraits/women/79.jpg",
-                "pictureMedium": "https://randomuser.me/api/portraits/med/women/79.jpg",
+                "department": "SALES",
+                "jobTitle": "Sales Lead",
+                "officeLocation": "RIGA",
                 "pictureThumbnail": "https://randomuser.me/api/portraits/thumb/women/79.jpg",
-                "nat": "IE",
+                "pictureMedium": "https://randomuser.me/api/portraits/med/women/79.jpg",
+                "pictureLarge": "https://randomuser.me/api/portraits/women/79.jpg",
                 "location": [
                     {
-                        "uid": "0x274c",
-                        "streetNumber": 6531,
-                        "streetName": "Pearse Street",
                         "city": "Sligo",
                         "state": "Galway City",
-                        "country": "Ireland",
-                        "postcode": "79576",
-                        "latitude": "54.5586",
-                        "longitude": "-125.2597",
-                        "timezoneOffset": "+10:00",
-                        "timezoneDescription": "Eastern Australia, Guam, Vladivostok"
+                        "country": "Ireland"
                     }
                 ]
-            },
-            {
-                "uid": "0x274d",
-                "gender": "MALE",
-                "title": "Mr",
-                "firstName": "Bo",
-                "lastName": "Jangles",
-                "email": "mr.bo.jangles@gmail.com",
-                "phone": null,
-                "cell": null,
-                "pictureLarge": null,
-                "pictureMedium": null,
-                "pictureThumbnail": null,
-                "nat": null,
-                "location": null
             }
         ]
     }

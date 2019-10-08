@@ -8,7 +8,10 @@ export const messages = {
             labels: {
                 name: 'Name',
                 email: 'Email',
-                location: 'Location',
+                jobTitle: 'Job Title',
+                department: 'Department',
+                officeLocation: 'Location',
+                location: 'Hometown',
             },
         },
     },

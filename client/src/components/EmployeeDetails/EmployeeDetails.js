@@ -22,6 +22,21 @@ const columns = [
         render: value => value,
     },
     {
+        field: 'jobTitle',
+        label: columnLabels.jobTitle,
+        render: value => value,
+    },
+    {
+        field: 'department',
+        label: columnLabels.department,
+        render: value => value,
+    },
+    {
+        field: 'officeLocation',
+        label: columnLabels.officeLocation,
+        render: value => value,
+    },
+    {
         field: 'location',
         label: columnLabels.location,
         render: value => value,
@@ -31,7 +46,7 @@ const columns = [
 export const EmployeeDetails = () => {
     // TODO delete sampleData.json and get this from the API
     const data = sampleData.data.allEmployees.map(employee => {
-        const { uid, firstName, lastName, email, phone } = employee;
+        const { uid, firstName, lastName, email, phone, jobTitle, department, officeLocation } = employee;
         const fullName = `${firstName} ${lastName}`;
         const locationData = get(employee, ['location', 0], {});
         let { city, state, country } = locationData;
@@ -45,7 +60,7 @@ export const EmployeeDetails = () => {
             ? locationList.join(', ')
             : '';
 
-        return { uid, fullName, email, phone, location };
+        return { uid, fullName, email, phone, jobTitle, department, officeLocation, location };
     });
 
     return <Table data={data} columns={columns} />;
