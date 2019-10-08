@@ -15,6 +15,7 @@ async function allEmployees(parentValue, args, context) {
                 pictureThumbnail
                 nat
                 department
+                jobTitle
                 location {
                     uid
                     streetName

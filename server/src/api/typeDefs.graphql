@@ -25,6 +25,7 @@ type Employee {
     pictureThumbnail: String
     nat: String
     department: DepartmentKind
+    jobTitle: String
     location: [Location]
 }
 

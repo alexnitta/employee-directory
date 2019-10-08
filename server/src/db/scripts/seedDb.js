@@ -4,12 +4,54 @@ import { newClientStub, newClient, dropAll, setSchema } from './utils';
 import seedData10 from './seedData10.json';
 import seedData500 from './seedData500.json';
 
+const getRandomIndex = inputArray => Math.ceil(Math.random() * inputArray.length - 1);
+
+const generateDepartmentAndJobTitle = () => {
+    const departmentsAndJobTitles = [
+        {
+            department: 'SALES',
+            jobTitles: [
+                'Sales Lead',
+                'Sales Associate',
+            ],
+        },
+        {
+            department: 'ENGINEERING',
+            jobTitles: [
+                'Junior Software Engineer',
+                'Staff Software Engineer',
+                'Senior Software Engineer',
+            ],
+        },
+        {
+            department: 'CUSTOMER_SUPPORT',
+            jobTitles: [
+                'Customer Support Associate',
+                'Customer Support Manager',
+            ],
+        },
+        {
+            department: 'FINANCE',
+            jobTitles: [
+                'Controller',
+                'Staff Accountant',
+                'Bookkeeper',
+            ],
+        },
+    ];
+
+    const { department, jobTitles } =
+        departmentsAndJobTitles[getRandomIndex(departmentsAndJobTitles)];
+    const jobTitle = jobTitles[getRandomIndex(jobTitles)];
+
+    return { department, jobTitle };
+}
+
 /**
  * Map over seedData.results and create a list of objects that will be used to populate Dgraph.
  * `seedData` is the JSON response from https://randomuser.me/api/?results=500
  */
 const cleanSeedData = seedData => {
-    const departments = ['SALES', 'ENGINEERING', 'CUSTOMER_SUPPORT', 'FINANCE'];
 
     return seedData.results.map(person => {
         const {
@@ -37,7 +79,7 @@ const cleanSeedData = seedData => {
         } = person;
 
         const gender = person.gender.toUpperCase();
-        const department = departments[Math.ceil(Math.random() * departments.length - 1)];
+        const { department, jobTitle } = generateDepartmentAndJobTitle();
 
         return {
             typeEmployee: '',
@@ -53,6 +95,7 @@ const cleanSeedData = seedData => {
             pictureThumbnail,
             nat,
             department,
+            jobTitle,
             location: [
                 {
                     typeLocation: '',
@@ -115,6 +158,7 @@ async function queryData(dgraphClient) {
                 pictureThumbnail
                 nat
                 department
+                jobTitle
                 location {
                     uid
                     streetName

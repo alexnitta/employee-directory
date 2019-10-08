@@ -25,6 +25,7 @@ export const schema = `
         pictureThumbnail: string
         nat: string
         department: string
+        jobTitle: string
         location: [uid]
     }
 
@@ -55,6 +56,7 @@ export const schema = `
     pictureThumbnail: string .
     nat: string .
     department: string .
+    jobTitle: string .
     location: [uid] .
 
     typeLocation: string .
