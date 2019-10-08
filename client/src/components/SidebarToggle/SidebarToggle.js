@@ -3,14 +3,9 @@ import { Flex } from 'rendition';
 import styled from 'styled-components/macro';
 import { Menu } from 'grommet-icons';
 
-const AppIcon = styled.img`
-    height: 30px;
-    width: 30px;
-    padding-left: 15px;
-`;
-
 const AppTitle = styled.h2`
     flex: 0 1 auto;
+    padding-left: 20px;
 `;
 
 const MenuWrapper = styled.div`
@@ -22,7 +17,6 @@ export const SidebarToggle = () => (
         <MenuWrapper>
             <Menu />
         </MenuWrapper>
-        <AppIcon src="favicon.png" />
         <AppTitle>Employee Directory</AppTitle>
     </Flex>
 );
