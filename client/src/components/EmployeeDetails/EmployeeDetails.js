@@ -4,20 +4,21 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 import { transformAllEmployees } from './util';
+import { NameCell } from './NameCell';
 import { messages } from '../../locale/en_us';
 
 const ALL_EMPLOYEES = gql`
     query {
         allEmployees {
+            uid
             firstName
             lastName
             email
+            phone
             department
             jobTitle
             officeLocation
-            pictureThumbnail
             pictureMedium
-            pictureLarge
             location {
                 city
                 state
@@ -36,7 +37,7 @@ const columns = [
     {
         field: 'fullName',
         label: columnLabels.name,
-        render: value => value,
+        render: (value, rowData) => <NameCell rowData={rowData} />,
     },
     {
         field: 'email',
