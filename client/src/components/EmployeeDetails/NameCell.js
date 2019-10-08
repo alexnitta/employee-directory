@@ -7,6 +7,7 @@ const ProfileImage = styled.img`
     width: 35px;
     border-radius: 35px;
     margin-right: 8px;
+    flex: 0 1 auto;
 `;
 
 const FullName = styled.div`
@@ -17,11 +18,9 @@ export const NameCell = ({ rowData }) => {
     const { pictureMedium, fullName } = rowData;
 
     return (
-        <Flex justifyContent="center" flexDirection="column">
-            <Flex alignItems="center">
-                <ProfileImage src={pictureMedium} />
-                <FullName>{fullName}</FullName>
-            </Flex>
+        <Flex alignItems="center">
+            <ProfileImage src={pictureMedium} />
+            <FullName >{fullName}</FullName>
         </Flex>
     );
 };
