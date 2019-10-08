@@ -18,4 +18,9 @@ export const messages = {
     addEmployee: {
         callToAction: 'Add Employee',
     },
+    filters: {
+        department: {
+            label: 'Department',
+        },
+    },
 };
