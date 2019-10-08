@@ -1,6 +1,14 @@
+# These enum options are not the developer's viewpoint on gender, just the state of the data in https://randomuser.me/api/
 enum GenderKind {
     FEMALE
     MALE
+}
+
+enum DepartmentKind {
+    SALES
+    ENGINEERING
+    CUSTOMER_SUPPORT
+    FINANCE
 }
 
 type Employee {
@@ -16,12 +24,11 @@ type Employee {
     pictureMedium: String
     pictureThumbnail: String
     nat: String
+    department: DepartmentKind
     location: [Location]
 }
 
-# The enum options are not the developer's viewpoint on gender, just the state of the data in https://randomuser.me/api/
 input EmployeeInput {
-    "One of ['MALE', 'FEMALE']"
     gender: GenderKind
     title: String
     firstName: String

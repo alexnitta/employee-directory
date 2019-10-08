@@ -8,8 +8,10 @@ import seedData500 from './seedData500.json';
  * Map over seedData.results and create a list of objects that will be used to populate Dgraph.
  * `seedData` is the JSON response from https://randomuser.me/api/?results=500
  */
-const cleanSeedData = seedData =>
-    seedData.results.map(person => {
+const cleanSeedData = seedData => {
+    const departments = ['SALES', 'ENGINEERING', 'CUSTOMER_SUPPORT', 'FINANCE'];
+
+    return seedData.results.map(person => {
         const {
             name: { first: firstName, title, last: lastName },
             email,
@@ -35,6 +37,7 @@ const cleanSeedData = seedData =>
         } = person;
 
         const gender = person.gender.toUpperCase();
+        const department = departments[Math.ceil(Math.random() * departments.length - 1)];
 
         return {
             typeEmployee: '',
@@ -49,6 +52,7 @@ const cleanSeedData = seedData =>
             pictureMedium,
             pictureThumbnail,
             nat,
+            department,
             location: [
                 {
                     typeLocation: '',
@@ -67,6 +71,7 @@ const cleanSeedData = seedData =>
             ],
         };
     });
+};
 
 /**
  * Using cleaned seed data, populate Dgraph with list of 500 employees
@@ -109,6 +114,7 @@ async function queryData(dgraphClient) {
                 pictureMedium
                 pictureThumbnail
                 nat
+                department
                 location {
                     uid
                     streetName
