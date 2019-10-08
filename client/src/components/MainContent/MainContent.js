@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { EmployeeDetails } from '../EmployeeDetails';
+
 export const MainContent = () => (
-    <div className="main-content">Main content here.</div>
+    <div className="main-content">
+        <EmployeeDetails />
+    </div>
 );
