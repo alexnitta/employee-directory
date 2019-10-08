@@ -33,9 +33,16 @@ export const EmployeeDetails = () => {
     const data = sampleData.data.allEmployees.map(employee => {
         const { uid, firstName, lastName, email, phone } = employee;
         const fullName = `${firstName} ${lastName}`;
-        const locationData = get(employee, ['location', 0]);
+        const locationData = get(employee, ['location', 0], {});
+        let { city, state, country } = locationData;
+
+        const locationList = [city, state, country].reduce((acc, curr) => {
+            curr && acc.push(curr);
+            return acc;
+        }, []);
+
         const location = locationData
-            ? `${locationData.city}, ${locationData.state}, ${locationData.country}`
+            ? locationList.join(', ')
             : '';
 
         return { uid, fullName, email, phone, location };
