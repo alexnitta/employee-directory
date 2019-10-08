@@ -1,10 +1,28 @@
 import React from 'react';
-import { Navbar } from 'rendition';
+import { Flex } from 'rendition';
 import styled from 'styled-components/macro';
+import { Menu } from 'grommet-icons';
 
 const AppIcon = styled.img`
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
+    padding-left: 15px;
 `;
 
-export const SidebarToggle = () => <AppIcon src="favicon.png" />;
+const AppTitle = styled.h2`
+    flex: 0 1 auto;
+`;
+
+const MenuWrapper = styled.div`
+    padding-left: 10px;
+`;
+
+export const SidebarToggle = () => (
+    <Flex alignItems="center">
+        <MenuWrapper>
+            <Menu />
+        </MenuWrapper>
+        <AppIcon src="favicon.png" />
+        <AppTitle>Employee Directory</AppTitle>
+    </Flex>
+);
