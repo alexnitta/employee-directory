@@ -59,11 +59,6 @@ const columns = [
         label: columnLabels.officeLocation,
         render: value => value,
     },
-    {
-        field: 'location',
-        label: columnLabels.location,
-        render: value => value,
-    },
 ];
 
 export const EmployeeDetails = () => {

@@ -17,9 +17,11 @@ export const NameCell = ({ rowData }) => {
     const { pictureMedium, fullName } = rowData;
 
     return (
-        <Flex alignItems="center">
-            <ProfileImage src={pictureMedium} />
-            <FullName>{fullName}</FullName>
+        <Flex justifyContent="center" flexDirection="column">
+            <Flex alignItems="center">
+                <ProfileImage src={pictureMedium} />
+                <FullName>{fullName}</FullName>
+            </Flex>
         </Flex>
     );
 };
