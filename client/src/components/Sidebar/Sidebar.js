@@ -1,3 +1,9 @@
 import React from 'react';
 
-export const Sidebar = () => <div className="sidebar">Sidebar here.</div>;
+import { SidebarToggle } from '../SidebarToggle';
+
+export const Sidebar = () => (
+    <div className="sidebar">
+        <SidebarToggle />
+    </div>
+);
