@@ -42,7 +42,7 @@ const columns = [
     {
         field: 'email',
         label: columnLabels.email,
-        render: value => value,
+        render: value => <a href={value}>{value}</a>
     },
     {
         field: 'jobTitle',
