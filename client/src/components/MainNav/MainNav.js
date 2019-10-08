@@ -5,12 +5,12 @@ import styled from 'styled-components/macro';
 import { messages } from '../../locale/en_us';
 
 const Logo = styled.img`
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
 `;
 
 export const MainNav = () => (
     <Navbar>
-        <Logo src="favicon.png" className="main-nav-img" />
+        <Logo src="icons/profile_icon.png" />
     </Navbar>
 );
