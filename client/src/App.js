@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'rendition';
 
-import './App.css';
 import { MainContent } from './components/MainContent';
 import { Sidebar } from './components/Sidebar';
 
