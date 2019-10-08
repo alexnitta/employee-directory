@@ -1,10 +1,31 @@
 import React from 'react';
-import get from 'lodash/get';
 import { Table } from 'rendition';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
-import { departmentEnumToString, officeLocationEnumToString } from './util';
-import sampleData from './sampleData.json';
+import { transformAllEmployees } from './util';
 import { messages } from '../../locale/en_us';
+
+const ALL_EMPLOYEES = gql`
+    query {
+        allEmployees {
+            firstName
+            lastName
+            email
+            department
+            jobTitle
+            officeLocation
+            pictureThumbnail
+            pictureMedium
+            pictureLarge
+            location {
+                city
+                state
+                country
+            }
+        }
+    }
+`;
 
 const columnLabels = messages.employeeDetails.columns.labels;
 
@@ -45,26 +66,12 @@ const columns = [
 ];
 
 export const EmployeeDetails = () => {
-    // TODO delete sampleData.json and get this from the API
-    const data = sampleData.data.allEmployees.map(employee => {
-        const { uid, firstName, lastName, email, phone, jobTitle } = employee;
-        const fullName = `${firstName} ${lastName}`;
-        const department = departmentEnumToString(employee.department);
-        const officeLocation = officeLocationEnumToString(employee.officeLocation);
-        const locationData = get(employee, ['location', 0], {});
-        let { city, state, country } = locationData;
+    const { loading, error, data: queryData } = useQuery(ALL_EMPLOYEES);
 
-        const locationList = [city, state, country].reduce((acc, curr) => {
-            curr && acc.push(curr);
-            return acc;
-        }, []);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
 
-        const location = locationData
-            ? locationList.join(', ')
-            : '';
-
-        return { uid, fullName, email, phone, jobTitle, department, officeLocation, location };
-    });
+    const data = transformAllEmployees(queryData.allEmployees);
 
     return <Table data={data} columns={columns} />;
 };
