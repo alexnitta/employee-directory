@@ -5,7 +5,6 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { createStore } from 'redux';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { Grommet } from 'grommet';
 
 import { MainContent } from './components/MainContent';
 import { MainNav } from './components/MainNav';
@@ -34,16 +33,6 @@ const LeftCol = styled.div`
 const RightCol = styled.div`
     flex: 1 1 auto;
 `;
-
-const theme = {
-    global: {
-        font: {
-            family: 'Roboto',
-            size: '14px',
-            height: '20px',
-        },
-    },
-};
 
 function App() {
     return (
