@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
 import { Button } from 'rendition';
 import styled from 'styled-components/macro';
+import { useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 import { messages } from '../../locale/en_us';
 import {
     DEPARTMENT_ENUM_REVERSE_MAP,
     OFFICE_LOCATION_REVERSE_MAP,
 } from '../constants';
+
+const CREATE_EMPLOYEE = gql`
+    mutation CreateEmployee($input: EmployeeInput) {
+        createEmployee(input: $input) {
+            firstName
+            lastName
+            email
+            department
+            officeLocation
+            jobTitle
+        }
+    }
+`;
 
 const { addEmployee } = messages;
 
@@ -30,7 +45,7 @@ const SubmitButtonWrapper = styled.div`
     text-align: center;
 `;
 
-const initialEnumState = { enumeration: '', label: ''};
+const initialEnumState = { enumeration: '', label: '' };
 
 export const AddEmployeeForm = ({ open, setOpen }) => {
     const [firstName, setFirstName] = useState('');
@@ -40,40 +55,48 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
     const [department, setDepartment] = useState(initialEnumState);
     const [officeLocation, setOfficeLocation] = useState(initialEnumState);
 
-    if (!open) { return null; }
+    if (!open) {
+        return null;
+    }
 
     return (
-        <StyledForm onSubmit={event => {
-            event.preventDefault();
-            // TODO use the useMutation hook from @apollo/react-hooks to send the createEmployee
-            // mutation. If the mutation is successful, update Redux and close the form. If not,
-            // show an error message.
-            setOpen(false);
-            }}>
+        <StyledForm
+            onSubmit={event => {
+                event.preventDefault();
+                // TODO use the useMutation hook from @apollo/react-hooks to send the createEmployee
+                // mutation. If the mutation is successful, update Redux and close the form. If not,
+                // show an error message.
+                setOpen(false);
+            }}
+        >
             <label>
                 {addEmployee.form.label.firstName}
                 <input
                     value={firstName}
-                    onChange={event => setFirstName(event.target.value)}/>
+                    onChange={event => setFirstName(event.target.value)}
+                />
             </label>
             <label>
                 {addEmployee.form.label.lastName}
                 <input
                     value={lastName}
-                    onChange={event => setLastName(event.target.value)} />
+                    onChange={event => setLastName(event.target.value)}
+                />
             </label>
             <label>
                 {addEmployee.form.label.email}
                 <input
                     type="email"
                     value={email}
-                    onChange={event => setEmail(event.target.value)} />
+                    onChange={event => setEmail(event.target.value)}
+                />
             </label>
             <label>
                 {addEmployee.form.label.jobTitle}
                 <input
                     value={jobTitle}
-                    onChange={event => setJobTitle(event.target.value)} />
+                    onChange={event => setJobTitle(event.target.value)}
+                />
             </label>
             <label>
                 {addEmployee.form.label.department}
@@ -87,14 +110,15 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                             label,
                             enumeration,
                         });
-                    }}>
-                    {Object.keys(DEPARTMENT_ENUM_REVERSE_MAP).map(department => {
-                        return (
-                            <option key={department}>
-                                {department}
-                            </option>
-                        );
-                    })}
+                    }}
+                >
+                    {Object.keys(DEPARTMENT_ENUM_REVERSE_MAP).map(
+                        department => {
+                            return (
+                                <option key={department}>{department}</option>
+                            );
+                        }
+                    )}
                 </select>
             </label>
             <label>
@@ -109,14 +133,17 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                             label,
                             enumeration,
                         });
-                    }}>
-                    {Object.keys(OFFICE_LOCATION_REVERSE_MAP).map(officeLocation => {
-                        return (
-                            <option key={officeLocation}>
-                                {officeLocation}
-                            </option>
-                        );
-                    })}
+                    }}
+                >
+                    {Object.keys(OFFICE_LOCATION_REVERSE_MAP).map(
+                        officeLocation => {
+                            return (
+                                <option key={officeLocation}>
+                                    {officeLocation}
+                                </option>
+                            );
+                        }
+                    )}
                 </select>
             </label>
             <SubmitButtonWrapper>
