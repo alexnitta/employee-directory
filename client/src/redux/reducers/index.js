@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import { session } from './session';
+import { sidebar } from './sidebar';
 
-export const rootReducer = combineReducers({ session });
+export const rootReducer = combineReducers({ sidebar });

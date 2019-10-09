@@ -9,16 +9,10 @@ const AppTitle = styled.h2`
     white-space: nowrap;
 `;
 
-const MenuWrapper = styled.div`
-    padding-left: 10px;
-    padding-top: 15px;
-`;
 
 export const SidebarToggle = ({ sidebarOpen, setSidebarOpen }) => (
     <Flex alignItems="center">
-        <MenuWrapper>
-            <Menu onClick={() => setSidebarOpen(!sidebarOpen)} />
-        </MenuWrapper>
+
         {sidebarOpen && <AppTitle>Employee Directory</AppTitle>}
     </Flex>
 );
