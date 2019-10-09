@@ -48,9 +48,8 @@ const SubmitButtonWrapper = styled.div`
 const initialEnumState = { enumeration: '', label: '' };
 
 export const AddEmployeeForm = ({ open, setOpen }) => {
-    const [createEmployee, { data, loading, error }] = useMutation(
-        CREATE_EMPLOYEE
-    );
+    // TODO handle error and loading states
+    const [createEmployee, { data }] = useMutation(CREATE_EMPLOYEE);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
