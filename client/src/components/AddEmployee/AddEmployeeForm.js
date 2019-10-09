@@ -48,6 +48,9 @@ const SubmitButtonWrapper = styled.div`
 const initialEnumState = { enumeration: '', label: '' };
 
 export const AddEmployeeForm = ({ open, setOpen }) => {
+    const [createEmployee, { data, loading, error }] = useMutation(
+        CREATE_EMPLOYEE
+    );
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -59,14 +62,23 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
         return null;
     }
 
+    if (open && data) {
+        setOpen(false);
+    }
+
     return (
         <StyledForm
             onSubmit={event => {
                 event.preventDefault();
-                // TODO use the useMutation hook from @apollo/react-hooks to send the createEmployee
-                // mutation. If the mutation is successful, update Redux and close the form. If not,
-                // show an error message.
-                setOpen(false);
+                const input = {
+                    firstName,
+                    lastName,
+                    email,
+                    jobTitle,
+                    department: department.enumeration,
+                    officeLocation: officeLocation.enumeration,
+                };
+                createEmployee({ variables: { input } });
             }}
         >
             <label>
