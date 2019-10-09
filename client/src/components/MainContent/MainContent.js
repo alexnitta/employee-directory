@@ -5,7 +5,9 @@ import { EmployeeSearch } from '../EmployeeSearch';
 
 export const MainContent = () => (
     <div>
+        {/* TODO: implement EmployeeSearch
         <EmployeeSearch />
+        */}
         <EmployeeDetails />
     </div>
 );
