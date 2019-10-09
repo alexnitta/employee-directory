@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Flex } from 'rendition';
+import { Button } from 'rendition';
 import styled from 'styled-components/macro';
 
 import { messages } from '../../locale/en_us';
@@ -24,7 +24,7 @@ const SubmitButtonWrapper = styled.div`
     text-align: center;
 `;
 
-export const AddEmployeeForm = () => {
+export const AddEmployeeForm = ({ open, setOpen }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -32,8 +32,14 @@ export const AddEmployeeForm = () => {
     const [department, setDepartment] = useState('');
     const [officeLocation, setOfficeLocation] = useState('');
 
+    if (!open) { return null; }
+
     return (
-        <StyledForm onSubmit={({ value }) => console.log("Submit: ", value)}>
+        <StyledForm onSubmit={event => {
+            debugger
+            event.preventDefault();
+            setOpen(false);
+            }}>
             <label>
                 {addEmployee.form.label.firstName}
                 <input

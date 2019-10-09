@@ -18,7 +18,6 @@ const ButtonWrapper = styled.div`
 
 export const AddEmployee = () => {
     const [open, setOpen] = useState(false);
-    console.log('open: ', open);
 
     return (
         <ButtonWrapper>
@@ -28,10 +27,7 @@ export const AddEmployee = () => {
                 icon={<UserAdd />}>
                 {addEmployee.callToAction}
             </Button>
-
-            {/* TODO open conditionally
-            open && <AddEmployeeForm /> */}
-            <AddEmployeeForm />
+           <AddEmployeeForm open={open} setOpen={setOpen} />
         </ButtonWrapper>
     );
 };
