@@ -27,6 +27,8 @@ export const messages = {
                 email: 'Email',
                 jobTitle: 'Job Title',
                 department: 'Department',
+                officeLocation: 'Location',
+                submit: 'Submit',
             },
         },
     },

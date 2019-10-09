@@ -28,7 +28,9 @@ export const AddEmployee = () => {
                 icon={<UserAdd />}>
                 {addEmployee.callToAction}
             </Button>
-            {/* open && <AddEmployeeForm /> */}
+
+            {/* TODO open conditionally
+            open && <AddEmployeeForm /> */}
             <AddEmployeeForm />
         </ButtonWrapper>
     );
