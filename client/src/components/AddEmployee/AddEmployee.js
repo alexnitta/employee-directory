@@ -22,7 +22,7 @@ export const AddEmployee = () => {
     return (
         <ButtonWrapper>
             <Button
-                onClick={() => setOpen(true)}
+                onClick={() => setOpen(!open)}
                 tertiary
                 icon={<UserAdd />}>
                 {addEmployee.callToAction}
