@@ -42,22 +42,18 @@ const columns = [
     {
         field: 'email',
         label: columnLabels.email,
-        render: value => <a href={value}>{value}</a>
     },
     {
         field: 'jobTitle',
         label: columnLabels.jobTitle,
-        render: value => value,
     },
     {
         field: 'department',
         label: columnLabels.department,
-        render: value => value,
     },
     {
         field: 'officeLocation',
         label: columnLabels.officeLocation,
-        render: value => value,
     },
 ];
 

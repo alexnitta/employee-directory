@@ -5,6 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { createStore } from 'redux';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import { Grommet } from 'grommet';
 
 import { MainContent } from './components/MainContent';
 import { MainNav } from './components/MainNav';
@@ -34,12 +35,22 @@ const RightCol = styled.div`
     flex: 1 1 auto;
 `;
 
+const theme = {
+    global: {
+        font: {
+            family: 'Roboto',
+            size: '14px',
+            height: '20px',
+        },
+    },
+};
+
 function App() {
     return (
         <div className="app">
-            <RenditionProvider>
-                <ReduxProvider store={store}>
-                    <ApolloProvider client={client}>
+            <ReduxProvider store={store}>
+                <ApolloProvider client={client}>
+                    <RenditionProvider>
                         <MainNav />
                         <Flex>
                             <LeftCol>
@@ -49,9 +60,9 @@ function App() {
                                 <MainContent />
                             </RightCol>
                         </Flex>
-                    </ApolloProvider>
-                </ReduxProvider>
-            </RenditionProvider>
+                    </RenditionProvider>
+                </ApolloProvider>
+            </ReduxProvider>
         </div>
     );
 }

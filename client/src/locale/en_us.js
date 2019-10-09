@@ -20,6 +20,15 @@ export const messages = {
     },
     addEmployee: {
         callToAction: 'Add Employee',
+        form: {
+            label: {
+                firstName: 'First Name',
+                lastName: 'Last Name',
+                email: 'Email',
+                jobTitle: 'Job Title',
+                department: 'Department',
+            },
+        },
     },
     filters: {
         department: {
