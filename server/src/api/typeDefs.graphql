@@ -44,6 +44,9 @@ input EmployeeInput {
     firstName: String
     lastName: String
     email: String
+    department: DepartmentKind
+    officeLocation: OfficeLocationKind
+    jobTitle: String
 }
 
 type Location {
