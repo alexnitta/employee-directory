@@ -3,6 +3,10 @@ import { Button } from 'rendition';
 import styled from 'styled-components/macro';
 
 import { messages } from '../../locale/en_us';
+import {
+    DEPARTMENT_ENUM_REVERSE_MAP,
+    OFFICE_LOCATION_REVERSE_MAP,
+} from '../constants';
 
 const { addEmployee } = messages;
 
@@ -25,20 +29,24 @@ const SubmitButtonWrapper = styled.div`
     text-align: center;
 `;
 
+const initialEnumState = { enumeration: '', label: ''};
+
 export const AddEmployeeForm = ({ open, setOpen }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [jobTitle, setJobTitle] = useState('');
-    const [department, setDepartment] = useState('');
-    const [officeLocation, setOfficeLocation] = useState('');
+    const [department, setDepartment] = useState(initialEnumState);
+    const [officeLocation, setOfficeLocation] = useState(initialEnumState);
 
     if (!open) { return null; }
 
     return (
         <StyledForm onSubmit={event => {
-            debugger
             event.preventDefault();
+            // TODO use the useMutation hook from @apollo/react-hooks to send the createEmployee
+            // mutation. If the mutation is successful, update Redux and close the form. If not,
+            // show an error message.
             setOpen(false);
             }}>
             <label>
@@ -68,15 +76,47 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             </label>
             <label>
                 {addEmployee.form.label.department}
-                <input
-                    value={department}
-                    onChange={event => setDepartment(event.target.value)} />
+                <select
+                    value={department.label}
+                    onChange={event => {
+                        const label = event.target.value;
+                        const enumeration = DEPARTMENT_ENUM_REVERSE_MAP[label];
+
+                        setDepartment({
+                            label,
+                            enumeration,
+                        });
+                    }}>
+                    {Object.keys(DEPARTMENT_ENUM_REVERSE_MAP).map(department => {
+                        return (
+                            <option key={department}>
+                                {department}
+                            </option>
+                        );
+                    })}
+                </select>
             </label>
             <label>
                 {addEmployee.form.label.officeLocation}
-                <input
-                    value={officeLocation}
-                    onChange={event => setOfficeLocation(event.target.value)} />
+                <select
+                    value={officeLocation.label}
+                    onChange={event => {
+                        const label = event.target.value;
+                        const enumeration = OFFICE_LOCATION_REVERSE_MAP[label];
+
+                        setOfficeLocation({
+                            label,
+                            enumeration,
+                        });
+                    }}>
+                    {Object.keys(OFFICE_LOCATION_REVERSE_MAP).map(officeLocation => {
+                        return (
+                            <option key={officeLocation}>
+                                {officeLocation}
+                            </option>
+                        );
+                    })}
+                </select>
             </label>
             <SubmitButtonWrapper>
                 <Button flex="0 1 auto" primary type="submit">

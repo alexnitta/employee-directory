@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 
-import { DEPARTMENT_ENUM_MAP, OFFICE_LOCATION_ENUM_MAP } from './constants';
+import { DEPARTMENT_ENUM_MAP, OFFICE_LOCATION_ENUM_MAP } from '../constants';
 
 export const departmentEnumToString = departmentEnum => DEPARTMENT_ENUM_MAP[departmentEnum];
 
