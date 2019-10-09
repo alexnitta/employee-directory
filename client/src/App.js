@@ -26,11 +26,11 @@ const client = new ApolloClient({
 
 const LeftCol = styled.div`
     flex: 1 1 auto;
+    max-width: 20%
 `;
 
 const RightCol = styled.div`
     flex: 1 1 auto;
-    width: 80%;
 `;
 
 function App() {
