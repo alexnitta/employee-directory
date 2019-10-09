@@ -17,6 +17,7 @@ const StyledForm = styled.form`
 
     input {
         margin-left: 10px;
+        border-radius: 3px;
     }
 `;
 
