@@ -33,6 +33,7 @@ export const messages = {
         },
     },
     filters: {
+        header: 'Filters',
         department: {
             label: 'Department',
         },

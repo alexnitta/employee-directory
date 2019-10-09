@@ -9,6 +9,9 @@ export const Sidebar = () => (
     <Flex flexDirection="column">
         <SidebarToggle />
         <AddEmployee />
-        <Filters />
+        {/*
+            TODO: implement filters by department and office location
+            <Filters />
+        */}
     </Flex>
 );
