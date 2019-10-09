@@ -5,18 +5,20 @@ import { Menu } from 'grommet-icons';
 
 const AppTitle = styled.h2`
     flex: 0 1 auto;
-    padding-left: 20px;
+    padding: 0px 20px;
+    white-space: nowrap;
 `;
 
 const MenuWrapper = styled.div`
     padding-left: 10px;
+    padding-top: 15px;
 `;
 
-export const SidebarToggle = () => (
+export const SidebarToggle = ({ sidebarOpen, setSidebarOpen }) => (
     <Flex alignItems="center">
         <MenuWrapper>
-            <Menu />
+            <Menu onClick={() => setSidebarOpen(!sidebarOpen)} />
         </MenuWrapper>
-        <AppTitle>Employee Directory</AppTitle>
+        {sidebarOpen && <AppTitle>Employee Directory</AppTitle>}
     </Flex>
 );

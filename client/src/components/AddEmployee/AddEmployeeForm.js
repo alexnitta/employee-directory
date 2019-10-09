@@ -17,6 +17,7 @@ const StyledForm = styled.form`
         display: flex;
         justify-content: space-between;
         padding-bottom: 8px;
+        white-space: nowrap;
     }
 
     input {
