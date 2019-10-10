@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table } from 'rendition';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { connect } from 'react-redux';
 
 import { transformAllEmployees } from './util';
 import { NameCell } from './NameCell';
+import { employeesListSelector } from '../../redux/selectors';
+import { setEmployeesList } from '../../redux/actionCreators';
 import { messages } from '../../locale/en_us';
 
 const ALL_EMPLOYEES = gql`
@@ -57,13 +60,30 @@ const columns = [
     },
 ];
 
-export const EmployeeDetails = () => {
-    const { loading, error, data: queryData } = useQuery(ALL_EMPLOYEES);
-
+const EmployeeDetails = ({ employeesList, dispatchSetEmployeesList }) => {
+    // TODO: handle error and loading states
+    const { data: queryData, loading, error } = useQuery(ALL_EMPLOYEES);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
-    const data = transformAllEmployees(queryData.allEmployees);
+    const list = transformAllEmployees(queryData.allEmployees);
 
-    return <Table data={data} columns={columns} />;
+    if (employeesList.length < 1) {
+        dispatchSetEmployeesList({ list });
+    }
+
+    return <Table data={employeesList} columns={columns} />;
 };
+
+const mapStateToProps = state => ({
+    employeesList: employeesListSelector(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+    dispatchSetEmployeesList: list => dispatch(setEmployeesList(list)),
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(EmployeeDetails);
