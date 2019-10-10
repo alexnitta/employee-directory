@@ -3,7 +3,7 @@ import { Button } from 'rendition';
 import styled from 'styled-components/macro';
 import { UserAdd } from 'grommet-icons';
 
-import { AddEmployeeForm } from './AddEmployeeForm';
+import AddEmployeeForm from './AddEmployeeForm';
 
 import { messages } from '../../locale/en_us';
 

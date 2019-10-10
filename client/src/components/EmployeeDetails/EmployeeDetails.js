@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Table } from 'rendition';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -64,12 +64,12 @@ const EmployeeDetails = ({ employeesList, dispatchSetEmployeesList }) => {
     // TODO: handle error and loading states
     const { data: queryData, loading, error } = useQuery(ALL_EMPLOYEES);
     if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+    if (error) return <p>Error</p>;
 
     const list = transformAllEmployees(queryData.allEmployees);
 
     if (employeesList.length < 1) {
-        dispatchSetEmployeesList({ list });
+        dispatchSetEmployeesList(list);
     }
 
     return <Table data={employeesList} columns={columns} />;
@@ -80,7 +80,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    dispatchSetEmployeesList: list => dispatch(setEmployeesList(list)),
+    dispatchSetEmployeesList: list => dispatch(setEmployeesList({ list })),
 });
 
 export default connect(

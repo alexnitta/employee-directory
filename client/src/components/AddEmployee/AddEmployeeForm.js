@@ -3,7 +3,9 @@ import { Button } from 'rendition';
 import styled from 'styled-components/macro';
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { connect } from 'react-redux';
 
+import { addEmployee } from '../../redux/actionCreators';
 import { messages } from '../../locale/en_us';
 import {
     DEPARTMENT_ENUM_REVERSE_MAP,
@@ -13,6 +15,7 @@ import {
 const CREATE_EMPLOYEE = gql`
     mutation CreateEmployee($input: EmployeeInput) {
         createEmployee(input: $input) {
+            uid
             firstName
             lastName
             email
@@ -22,8 +25,6 @@ const CREATE_EMPLOYEE = gql`
         }
     }
 `;
-
-const { addEmployee } = messages;
 
 const StyledForm = styled.form`
     padding: 20px 10px;
@@ -54,7 +55,7 @@ const initialFormState = {
     officeLocation: { enumeration: '', label: '' },
 };
 
-export const AddEmployeeForm = ({ open, setOpen }) => {
+const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
     // TODO handle error and loading states for useMutation
     const [createEmployee, { data }] = useMutation(CREATE_EMPLOYEE);
     const [formState, setFormState] = useState(initialFormState);
@@ -64,6 +65,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
     }
 
     if (open && data) {
+        dispatchAddEmployee(data.createEmployee);
         setOpen(false);
     }
 
@@ -81,7 +83,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             }}
         >
             <label>
-                {addEmployee.form.label.firstName}
+                {messages.addEmployee.form.label.firstName}
                 <input
                     required
                     value={formState.firstName}
@@ -94,7 +96,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                 />
             </label>
             <label>
-                {addEmployee.form.label.lastName}
+                {messages.addEmployee.form.label.lastName}
                 <input
                     required
                     value={formState.lastName}
@@ -104,7 +106,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                 />
             </label>
             <label>
-                {addEmployee.form.label.email}
+                {messages.addEmployee.form.label.email}
                 <input
                     required
                     type="email"
@@ -115,7 +117,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                 />
             </label>
             <label>
-                {addEmployee.form.label.jobTitle}
+                {messages.addEmployee.form.label.jobTitle}
                 <input
                     required
                     value={formState.jobTitle}
@@ -125,7 +127,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                 />
             </label>
             <label>
-                {addEmployee.form.label.department}
+                {messages.addEmployee.form.label.department}
                 <select
                     required
                     value={formState.department.label}
@@ -142,7 +144,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                     }}
                 >
                     <option value="">
-                        {addEmployee.form.select.value.emptyDepartment}
+                        {messages.addEmployee.form.select.value.emptyDepartment}
                     </option>
                     {Object.keys(DEPARTMENT_ENUM_REVERSE_MAP).map(
                         department => {
@@ -154,7 +156,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                 </select>
             </label>
             <label>
-                {addEmployee.form.label.officeLocation}
+                {messages.addEmployee.form.label.officeLocation}
                 <select
                     required
                     value={formState.officeLocation.label}
@@ -172,7 +174,10 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
                     }}
                 >
                     <option value="">
-                        {addEmployee.form.select.value.emptyOfficeLocation}
+                        {
+                            messages.addEmployee.form.select.value
+                                .emptyOfficeLocation
+                        }
                     </option>
                     {Object.keys(OFFICE_LOCATION_REVERSE_MAP).map(
                         officeLocation => {
@@ -187,9 +192,18 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             </label>
             <SubmitButtonWrapper>
                 <Button flex="0 1 auto" primary type="submit">
-                    {addEmployee.form.label.submit}
+                    {messages.addEmployee.form.label.submit}
                 </Button>
             </SubmitButtonWrapper>
         </StyledForm>
     );
 };
+
+const mapDispatchToProps = dispatch => ({
+    dispatchAddEmployee: employee => dispatch(addEmployee({ employee })),
+});
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(AddEmployeeForm);

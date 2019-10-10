@@ -1,3 +1,5 @@
 export const SET_SIDEBAR_OPEN = 'SET_SIDEBAR_OPEN';
 
 export const SET_EMPLOYEES_LIST = 'SET_EMPLOYEES_LIST';
+
+export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
