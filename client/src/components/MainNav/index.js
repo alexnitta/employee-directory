@@ -1,3 +1,3 @@
-import { MainNav } from './MainNav';
+import MainNav from './MainNav';
 
 export { MainNav };

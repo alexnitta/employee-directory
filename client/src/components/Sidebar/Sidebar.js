@@ -1,12 +1,9 @@
 import React from 'react';
 import { Flex } from 'rendition';
 import styled from 'styled-components/macro';
-import { Menu } from 'grommet-icons';
 
 import { AddEmployee } from '../AddEmployee';
 // import { Filters } from '../Filters';
-import { sidebarOpenSelector } from '../../redux/selectors';
-import { setSidebarOpen } from '../../redux/actionCreators';
 
 const AppTitle = styled.h2`
     flex: 0 1 auto;
