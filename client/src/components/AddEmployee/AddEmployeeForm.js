@@ -83,6 +83,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.firstName}
                 <input
+                    required
                     value={formState.firstName}
                     onChange={e =>
                         setFormState({
@@ -95,6 +96,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.lastName}
                 <input
+                    required
                     value={formState.lastName}
                     onChange={e =>
                         setFormState({ ...formState, lastName: e.target.value })
@@ -104,6 +106,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.email}
                 <input
+                    required
                     type="email"
                     value={formState.email}
                     onChange={e =>
@@ -114,6 +117,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.jobTitle}
                 <input
+                    required
                     value={formState.jobTitle}
                     onChange={e =>
                         setFormState({ ...formState, jobTitle: e.target.value })
@@ -123,6 +127,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.department}
                 <select
+                    required
                     value={formState.department.label}
                     onChange={e => {
                         const label = e.target.value;
@@ -151,6 +156,7 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.officeLocation}
                 <select
+                    required
                     value={formState.officeLocation.label}
                     onChange={e => {
                         const label = e.target.value;
