@@ -1,30 +1,18 @@
 import React, { useState } from 'react';
 import { Button } from 'rendition';
 import styled from 'styled-components/macro';
-import { useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import { connect } from 'react-redux';
+import get from 'lodash/get';
 
 import { addEmployee } from '../../redux/actionCreators';
 import { messages } from '../../locale/en_us';
 import {
     DEPARTMENT_ENUM_REVERSE_MAP,
     OFFICE_LOCATION_REVERSE_MAP,
-} from '../constants';
+} from '../../constants';
+import { apiFetcher, apiRequestGenerators } from '../../util';
 
-const CREATE_EMPLOYEE = gql`
-    mutation CreateEmployee($input: EmployeeInput) {
-        createEmployee(input: $input) {
-            uid
-            firstName
-            lastName
-            email
-            department
-            officeLocation
-            jobTitle
-        }
-    }
-`;
+const { createEmployeeMutation } = apiRequestGenerators;
 
 const StyledForm = styled.form`
     padding: 20px 10px;
@@ -56,17 +44,10 @@ const initialFormState = {
 };
 
 const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
-    // TODO handle error and loading states for useMutation
-    const [createEmployee, { data }] = useMutation(CREATE_EMPLOYEE);
     const [formState, setFormState] = useState(initialFormState);
 
     if (!open) {
         return null;
-    }
-
-    if (open && data) {
-        dispatchAddEmployee(data.createEmployee);
-        setOpen(false);
     }
 
     return (
@@ -78,8 +59,20 @@ const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                     department: formState.department.enumeration,
                     officeLocation: formState.officeLocation.enumeration,
                 };
+                const body = createEmployeeMutation(input);
+                apiFetcher(body).then(json => {
+                    const employee = get(json, 'data.createEmployee');
 
-                createEmployee({ variables: { input } });
+                    if (employee) {
+                        dispatchAddEmployee(employee);
+                        setOpen(false);
+                    } else {
+                        // TODO: better error messaging
+                        alert(
+                            'Encountered an error when creating employee. Please try again.'
+                        );
+                    }
+                });
             }}
         >
             <label>

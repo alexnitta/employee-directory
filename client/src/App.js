@@ -7,19 +7,15 @@ import ApolloClient from 'apollo-boost';
 
 import { rootReducer } from './redux/reducers';
 import { AppContainer } from './components/AppContainer';
+import { GRAPHQL_URI } from './constants';
 
 const store = createStore(
     rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-const graphqlUri =
-    process.env.NODE_ENV === 'development'
-        ? 'http://localhost:8001/graphql'
-        : 'production_url_goes_here';
-
 const client = new ApolloClient({
-    uri: graphqlUri,
+    uri: GRAPHQL_URI,
 });
 
 function App() {
