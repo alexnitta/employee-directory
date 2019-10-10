@@ -13,6 +13,7 @@ const ButtonWrapper = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 20px;
+    padding-top: 20px;
     text-align: center;
 `;
 
@@ -21,13 +22,10 @@ export const AddEmployee = () => {
 
     return (
         <ButtonWrapper>
-            <Button
-                onClick={() => setOpen(!open)}
-                tertiary
-                icon={<UserAdd />}>
+            <Button onClick={() => setOpen(!open)} tertiary icon={<UserAdd />}>
                 {addEmployee.callToAction}
             </Button>
-           <AddEmployeeForm open={open} setOpen={setOpen} />
+            <AddEmployeeForm open={open} setOpen={setOpen} />
         </ButtonWrapper>
     );
 };
