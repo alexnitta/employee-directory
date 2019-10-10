@@ -45,17 +45,19 @@ const SubmitButtonWrapper = styled.div`
     text-align: center;
 `;
 
-const initialEnumState = { enumeration: '', label: '' };
+const initialFormState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    jobTitle: '',
+    department: { enumeration: '', label: '' },
+    officeLocation: { enumeration: '', label: '' },
+};
 
 export const AddEmployeeForm = ({ open, setOpen }) => {
-    // TODO handle error and loading states
+    // TODO handle error and loading states for useMutation
     const [createEmployee, { data }] = useMutation(CREATE_EMPLOYEE);
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [jobTitle, setJobTitle] = useState('');
-    const [department, setDepartment] = useState(initialEnumState);
-    const [officeLocation, setOfficeLocation] = useState(initialEnumState);
+    const [formState, setFormState] = useState(initialFormState);
 
     if (!open) {
         return null;
@@ -67,62 +69,76 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
 
     return (
         <StyledForm
-            onSubmit={event => {
-                event.preventDefault();
+            onSubmit={e => {
+                e.preventDefault();
                 const input = {
-                    firstName,
-                    lastName,
-                    email,
-                    jobTitle,
-                    department: department.enumeration,
-                    officeLocation: officeLocation.enumeration,
+                    ...formState,
+                    department: formState.department.enumeration,
+                    officeLocation: formState.officeLocation.enumeration,
                 };
+
                 createEmployee({ variables: { input } });
             }}
         >
             <label>
                 {addEmployee.form.label.firstName}
                 <input
-                    value={firstName}
-                    onChange={event => setFirstName(event.target.value)}
+                    value={formState.firstName}
+                    onChange={e =>
+                        setFormState({
+                            ...formState,
+                            firstName: e.target.value,
+                        })
+                    }
                 />
             </label>
             <label>
                 {addEmployee.form.label.lastName}
                 <input
-                    value={lastName}
-                    onChange={event => setLastName(event.target.value)}
+                    value={formState.lastName}
+                    onChange={e =>
+                        setFormState({ ...formState, lastName: e.target.value })
+                    }
                 />
             </label>
             <label>
                 {addEmployee.form.label.email}
                 <input
                     type="email"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
+                    value={formState.email}
+                    onChange={e =>
+                        setFormState({ ...formState, email: e.target.value })
+                    }
                 />
             </label>
             <label>
                 {addEmployee.form.label.jobTitle}
                 <input
-                    value={jobTitle}
-                    onChange={event => setJobTitle(event.target.value)}
+                    value={formState.jobTitle}
+                    onChange={e =>
+                        setFormState({ ...formState, jobTitle: e.target.value })
+                    }
                 />
             </label>
             <label>
                 {addEmployee.form.label.department}
                 <select
-                    value={department.label}
-                    onChange={event => {
-                        const label = event.target.value;
+                    value={formState.department.label}
+                    onChange={e => {
+                        const label = e.target.value;
                         const enumeration = DEPARTMENT_ENUM_REVERSE_MAP[label];
-
-                        setDepartment({
-                            label,
-                            enumeration,
+                        setFormState({
+                            ...formState,
+                            department: {
+                                label,
+                                enumeration,
+                            },
                         });
                     }}
                 >
+                    <option value="">
+                        {addEmployee.form.select.value.emptyDepartment}
+                    </option>
                     {Object.keys(DEPARTMENT_ENUM_REVERSE_MAP).map(
                         department => {
                             return (
@@ -135,17 +151,23 @@ export const AddEmployeeForm = ({ open, setOpen }) => {
             <label>
                 {addEmployee.form.label.officeLocation}
                 <select
-                    value={officeLocation.label}
-                    onChange={event => {
-                        const label = event.target.value;
+                    value={formState.officeLocation.label}
+                    onChange={e => {
+                        const label = e.target.value;
                         const enumeration = OFFICE_LOCATION_REVERSE_MAP[label];
 
-                        setOfficeLocation({
-                            label,
-                            enumeration,
+                        setFormState({
+                            ...formState,
+                            officeLocation: {
+                                label,
+                                enumeration,
+                            },
                         });
                     }}
                 >
+                    <option value="">
+                        {addEmployee.form.select.value.emptyOfficeLocation}
+                    </option>
                     {Object.keys(OFFICE_LOCATION_REVERSE_MAP).map(
                         officeLocation => {
                             return (

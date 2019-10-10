@@ -30,6 +30,12 @@ export const messages = {
                 officeLocation: 'Location',
                 submit: 'Submit',
             },
+            select: {
+                value: {
+                    emptyDepartment: 'Select a department',
+                    emptyOfficeLocation: 'Select a location',
+                },
+            },
         },
     },
     filters: {
