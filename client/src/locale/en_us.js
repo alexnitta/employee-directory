@@ -5,15 +5,13 @@
 export const messages = {
     appTitle: 'Employee Directory',
     employeeDetails: {
-        columns: {
-            labels: {
-                name: 'Name',
-                email: 'Email',
-                jobTitle: 'Job Title',
-                department: 'Department',
-                officeLocation: 'Location',
-                location: 'Hometown',
-            },
+        columnLabels: {
+            name: 'Name',
+            email: 'Email',
+            jobTitle: 'Job Title',
+            department: 'Department',
+            officeLocation: 'Location',
+            location: 'Hometown',
         },
     },
     employeeSearch: {
@@ -21,22 +19,18 @@ export const messages = {
     },
     addEmployee: {
         callToAction: 'Add Employee',
-        form: {
-            label: {
-                firstName: 'First Name',
-                lastName: 'Last Name',
-                email: 'Email',
-                jobTitle: 'Job Title',
-                department: 'Department',
-                officeLocation: 'Location',
-                submit: 'Submit',
-            },
-            select: {
-                value: {
-                    emptyDepartment: 'Select a department',
-                    emptyOfficeLocation: 'Select a location',
-                },
-            },
+        inputLabels: {
+            firstName: 'First Name',
+            lastName: 'Last Name',
+            email: 'Email',
+            jobTitle: 'Job Title',
+            department: 'Department',
+            officeLocation: 'Location',
+            submit: 'Submit',
+        },
+        selectValues: {
+            emptyDepartment: 'Select a department',
+            emptyOfficeLocation: 'Select a location',
         },
     },
     filters: {

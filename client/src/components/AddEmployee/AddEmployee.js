@@ -7,7 +7,9 @@ import { AddEmployeeForm } from './AddEmployeeForm';
 
 import { messages } from '../../locale/en_us';
 
-const { addEmployee } = messages;
+const {
+    addEmployee: { callToAction },
+} = messages;
 
 const ButtonWrapper = styled.div`
     padding-left: 10px;
@@ -23,7 +25,7 @@ export const AddEmployee = () => {
     return (
         <ButtonWrapper>
             <Button onClick={() => setOpen(!open)} tertiary icon={<UserAdd />}>
-                {addEmployee.callToAction}
+                {callToAction}
             </Button>
             <AddEmployeeForm open={open} setOpen={setOpen} />
         </ButtonWrapper>

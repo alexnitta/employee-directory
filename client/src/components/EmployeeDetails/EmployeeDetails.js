@@ -8,7 +8,9 @@ import { NameCell } from './NameCell';
 import { messages } from '../../locale/en_us';
 import { ALL_EMPLOYEES } from '../../graphql/queries';
 
-const columnLabels = messages.employeeDetails.columns.labels;
+const {
+    employeeDetails: { columnLabels },
+} = messages;
 
 // The Table component from rendition uses componentWillReceiveProps internally. This is a known
 // issue: https://github.com/balena-io-modules/rendition/issues/944

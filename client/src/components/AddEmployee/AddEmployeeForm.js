@@ -11,6 +11,10 @@ import {
     OFFICE_LOCATION_REVERSE_MAP,
 } from '../../constants';
 
+const {
+    addEmployee: { inputLabels, selectValues },
+} = messages;
+
 const StyledForm = styled.form`
     padding: 20px 10px;
 
@@ -81,7 +85,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
             }}
         >
             <label>
-                {messages.addEmployee.form.label.firstName}
+                {inputLabels.firstName}
                 <input
                     required
                     value={formState.firstName}
@@ -94,7 +98,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                 />
             </label>
             <label>
-                {messages.addEmployee.form.label.lastName}
+                {inputLabels.lastName}
                 <input
                     required
                     value={formState.lastName}
@@ -104,7 +108,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                 />
             </label>
             <label>
-                {messages.addEmployee.form.label.email}
+                {inputLabels.email}
                 <input
                     required
                     type="email"
@@ -115,7 +119,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                 />
             </label>
             <label>
-                {messages.addEmployee.form.label.jobTitle}
+                {inputLabels.jobTitle}
                 <input
                     required
                     value={formState.jobTitle}
@@ -125,7 +129,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                 />
             </label>
             <label>
-                {messages.addEmployee.form.label.department}
+                {inputLabels.department}
                 <select
                     required
                     value={formState.department.label}
@@ -141,9 +145,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                         });
                     }}
                 >
-                    <option value="">
-                        {messages.addEmployee.form.select.value.emptyDepartment}
-                    </option>
+                    <option value="">{selectValues.emptyDepartment}</option>
                     {Object.keys(DEPARTMENT_ENUM_REVERSE_MAP).map(
                         department => {
                             return (
@@ -154,7 +156,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                 </select>
             </label>
             <label>
-                {messages.addEmployee.form.label.officeLocation}
+                {inputLabels.officeLocation}
                 <select
                     required
                     value={formState.officeLocation.label}
@@ -171,12 +173,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
                         });
                     }}
                 >
-                    <option value="">
-                        {
-                            messages.addEmployee.form.select.value
-                                .emptyOfficeLocation
-                        }
-                    </option>
+                    <option value="">{selectValues.emptyOfficeLocation}</option>
                     {Object.keys(OFFICE_LOCATION_REVERSE_MAP).map(
                         officeLocation => {
                             return (
@@ -190,7 +187,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
             </label>
             <SubmitButtonWrapper>
                 <Button flex="0 1 auto" primary type="submit">
-                    {messages.addEmployee.form.label.submit}
+                    {inputLabels.submit}
                 </Button>
             </SubmitButtonWrapper>
         </StyledForm>
