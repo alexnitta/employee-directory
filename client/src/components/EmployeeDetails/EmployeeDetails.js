@@ -16,23 +16,28 @@ const columns = [
     {
         field: 'fullName',
         label: columnLabels.name,
+        sortable: true,
         render: (value, rowData) => <NameCell rowData={rowData} />,
     },
     {
         field: 'email',
         label: columnLabels.email,
+        sortable: true,
     },
     {
         field: 'jobTitle',
         label: columnLabels.jobTitle,
+        sortable: true,
     },
     {
         field: 'department',
         label: columnLabels.department,
+        sortable: true,
     },
     {
         field: 'officeLocation',
         label: columnLabels.officeLocation,
+        sortable: true,
     },
 ];
 
