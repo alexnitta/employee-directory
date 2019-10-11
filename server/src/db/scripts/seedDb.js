@@ -1,19 +1,16 @@
 import * as dgraph from 'dgraph-js';
 
 import { newClientStub, newClient, dropAll, setSchema } from './utils';
-import seedData10 from './seedData10.json';
-import seedData500 from './seedData500.json';
+import seedData from './seedData.json';
 
-const getRandomIndex = inputArray => Math.ceil(Math.random() * inputArray.length - 1);
+const getRandomIndex = inputArray =>
+    Math.ceil(Math.random() * inputArray.length - 1);
 
 const generateCompanyDetails = () => {
     const departmentsAndJobTitles = [
         {
             department: 'SALES',
-            jobTitles: [
-                'Sales Lead',
-                'Sales Associate',
-            ],
+            jobTitles: ['Sales Lead', 'Sales Associate'],
         },
         {
             department: 'ENGINEERING',
@@ -32,29 +29,31 @@ const generateCompanyDetails = () => {
         },
         {
             department: 'FINANCE',
-            jobTitles: [
-                'Controller',
-                'Staff Accountant',
-                'Bookkeeper',
-            ],
+            jobTitles: ['Controller', 'Staff Accountant', 'Bookkeeper'],
         },
     ];
-    const officeLocations = ['LONDON', 'KYOTO', 'SAN_FRANCISCO', 'PARIS', 'RIGA'];
+    const officeLocations = [
+        'LONDON',
+        'KYOTO',
+        'SAN_FRANCISCO',
+        'PARIS',
+        'RIGA',
+    ];
 
-    const { department, jobTitles } =
-        departmentsAndJobTitles[getRandomIndex(departmentsAndJobTitles)];
+    const { department, jobTitles } = departmentsAndJobTitles[
+        getRandomIndex(departmentsAndJobTitles)
+    ];
     const jobTitle = jobTitles[getRandomIndex(jobTitles)];
     const officeLocation = officeLocations[getRandomIndex(officeLocations)];
 
     return { department, jobTitle, officeLocation };
-}
+};
 
 /**
  * Map over seedData.results and create a list of objects that will be used to populate Dgraph.
- * `seedData` is the JSON response from https://randomuser.me/api/?results=500
+ * `seedData` is the JSON response from https://randomuser.me/api/?results=100
  */
 const cleanSeedData = seedData => {
-
     return seedData.results.map(person => {
         const {
             name: { first: firstName, title, last: lastName },
@@ -81,7 +80,11 @@ const cleanSeedData = seedData => {
         } = person;
 
         const gender = person.gender.toUpperCase();
-        const { department, jobTitle, officeLocation } = generateCompanyDetails();
+        const {
+            department,
+            jobTitle,
+            officeLocation,
+        } = generateCompanyDetails();
 
         return {
             typeEmployee: '',
@@ -123,7 +126,7 @@ const cleanSeedData = seedData => {
  * Using cleaned seed data, populate Dgraph with list of 500 employees
  */
 async function createData(dgraphClient) {
-    const cleanData = cleanSeedData(seedData10);
+    const cleanData = cleanSeedData(seedData);
 
     for (const employee of cleanData) {
         const txn = dgraphClient.newTxn();
