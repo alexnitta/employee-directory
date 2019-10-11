@@ -1,6 +1,6 @@
 # employee-directory client
 
-A React / Redux UI for browsing a list of employees at an imaginary company.
+A React / GraphQL UI for browsing a list of employees at an imaginary company.
 
 ## Available Scripts
 
