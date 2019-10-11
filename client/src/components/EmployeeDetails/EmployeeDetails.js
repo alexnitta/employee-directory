@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'rendition';
 import { useQuery } from '@apollo/react-hooks';
+import styled from 'styled-components/macro';
 
 import { transformAllEmployees } from './util';
 import { NameCell } from './NameCell';
@@ -41,6 +42,12 @@ const columns = [
     },
 ];
 
+const EmployeeTable = styled.div`
+    a[data-display='table-cell'] {
+        vertical-align: middle;
+    }
+`;
+
 export const EmployeeDetails = ({
     employeesList,
     dispatchSetEmployeesList,
@@ -52,5 +59,9 @@ export const EmployeeDetails = ({
 
     const data = transformAllEmployees(queryData.allEmployees);
 
-    return <Table data={data} columns={columns} />;
+    return (
+        <EmployeeTable>
+            <Table data={data} columns={columns} />
+        </EmployeeTable>
+    );
 };
