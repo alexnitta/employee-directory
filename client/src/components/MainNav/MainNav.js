@@ -14,8 +14,8 @@ const MenuWrapper = styled.div`
 `;
 
 const UserSettingsWrapper = styled.div`
+    flex: 0 1 auto;
     padding-right: 15px;
-    padding-top: 20px;
 `;
 
 const NavBar = styled.div`
@@ -24,11 +24,19 @@ const NavBar = styled.div`
     background: #e0e0eb;
 `;
 
-const AppTitle = styled.h2`
+const AppTitle = styled.h1`
     flex: 1 1 auto;
     padding: 0px 10px;
     white-space: nowrap;
 `;
+
+const UserName = styled.div`
+    flex: 0 1 auto;
+    padding-right: 10px;
+`;
+
+// TODO: implement authentication and use logged-in user's data here
+const fakeUserFullName = 'Jane User';
 
 const MainNav = ({ sidebarOpen, dispatchSetSidebarOpen }) => (
     <NavBar>
@@ -38,9 +46,13 @@ const MainNav = ({ sidebarOpen, dispatchSetSidebarOpen }) => (
             </MenuWrapper>
             <AppTitle>Employee Directory</AppTitle>
         </Flex>
-        <UserSettingsWrapper>
-            <UserSettings />
-        </UserSettingsWrapper>
+        <Flex alignItems="center">
+            <UserName>{fakeUserFullName}</UserName>
+            <UserSettingsWrapper>
+                {/* TODO implement user settings admin feature */}
+                <UserSettings />
+            </UserSettingsWrapper>
+        </Flex>
     </NavBar>
 );
 
