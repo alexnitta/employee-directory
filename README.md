@@ -12,17 +12,18 @@ More details are given within the README.md files in each folder.
 
 You'll need to make sure Docker ([Mac](https://docs.docker.com/docker-for-mac/install/)/[Windows](https://docs.docker.com/docker-for-windows/install/)) is installed before you begin.
 
-1. From within `server/`, start up Dgraph and GraphQL: `docker-compose up`
+1. From within `server/`, start up Dgraph and GraphQL: `docker-compose up`. Docker will pull down the dependencies and build four containers to run Express and Dgraph. Wait until the logs stop before you proceed - this may take a few minutes.
 2. The first time you run the app, Dgraph will be empty. Open a new terminal window, `cd` to `server/` and run the following command to import sample data:
     ```
     docker-compose exec api npm run seed-db
     ```
 
+There are several local services now running. To explore the API, you can use the GraphQL playground at: [http://localhost:8001/playground](http://localhost:8001/playground)
+
 ### Starting up the `client`
 
-1. From the `client` folder, run `npm install` to install dependencies
-2. Run `npm start` to start up the dev server and listen for changes
-3. Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
+1. From the `client` folder, run `npm install` to install dependencies. This may take a few minutes.
+2. Run `npm start` to start up the dev server. This should automatically open [http://localhost:3000](http://localhost:3000) to allow you to view the app in the browser.
 
 ## Contributing
 
