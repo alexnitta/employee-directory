@@ -25,6 +25,12 @@ There are several local services now running. To explore the API, you can use th
 1. From the `client` folder, run `npm install` to install dependencies. This may take a few minutes.
 2. Run `npm start` to start up the dev server. This should automatically open [http://localhost:3000](http://localhost:3000) to allow you to view the app in the browser.
 
-## Contributing
+## Caveats
+
+This is a basic implementation that is missing several key features. See the [wiki](https://github.com/alexnitta/employee-directory/wiki) for a list of planned features.
+
+The backend is currently initialized from sample data loaded from [https://randomuser.me/api/](https://randomuser.me/api/). The backend is built with Dgraph, on the assumption that future development will require relationships between entities and would be well-served by a graph architecture. At the moment, there is one such relationship in the backend - from an employee to a location - but this relationship is not used in the UI. The location shown in the current UI is actually the `officeLocation`; the one set up in the backend is the employee's residence location - or at least one can assume this from the shape of the data returned by randomuser.me.
+
+## Code style
 
 See notes on using prettier to format code: [_docs/prettier.md](_docs/prettier.md).
