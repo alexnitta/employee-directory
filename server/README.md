@@ -4,11 +4,7 @@ A backend that exposes a list of employees at an imaginary company, using Expres
 
 ## Getting started
 
-## 1. Set up environment variables
-
-See [./_docs/dotenv.md](./_docs/dotenv.md) for notes on how to set up your environment variables.
-
-## 2. Run with Docker
+## Run with Docker
 
 - Start up Dgraph and GraphQL: `docker-compose up`
   - Dgraph UI will be up at: [http://localhost:8000](http://localhost:8000)
@@ -16,7 +12,7 @@ See [./_docs/dotenv.md](./_docs/dotenv.md) for notes on how to set up your envir
   - GraphQL playground will be up at: [http://localhost:8001/playground](http://localhost:8001/playground)
   - GraphQL will be up at: [http://localhost:8001/graphql](http://localhost:8001/graphql)
 
-## 3. Database scripts
+## Database scripts
 
 There are some scripts that will be useful in managing the database.
 
