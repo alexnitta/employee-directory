@@ -19,3 +19,9 @@ export const ALL_EMPLOYEES = gql`
         }
     }
 `;
+
+export const SIDEBAR_OPEN = gql`
+    {
+        sidebarClosed @client
+    }
+`;

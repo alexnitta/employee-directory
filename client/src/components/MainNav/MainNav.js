@@ -1,12 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Flex } from 'rendition';
 import { UserSettings, Menu } from 'grommet-icons';
 import styled from 'styled-components/macro';
+import { useQuery } from '@apollo/react-hooks';
+import get from 'lodash/get';
 
-import { sidebarOpenSelector } from '../../redux/selectors';
-import { setSidebarOpen } from '../../redux/actionCreators';
 import { messages } from '../../locale/en_us';
+import { SIDEBAR_OPEN } from '../../graphql/queries';
 
 const MenuWrapper = styled.div`
     padding-left: 20px;
@@ -39,33 +39,33 @@ const UserName = styled.div`
 // TODO: implement authentication and use logged-in user's data here
 const fakeUserFullName = 'Jane User';
 
-const MainNav = ({ sidebarOpen, dispatchSetSidebarOpen }) => (
-    <NavBar>
-        <Flex alignItems="center" justifyContent="center">
-            <MenuWrapper>
-                <Menu onClick={() => dispatchSetSidebarOpen(!sidebarOpen)} />
-            </MenuWrapper>
-            <AppTitle>{messages.appTitle}</AppTitle>
-        </Flex>
-        <Flex alignItems="center">
-            <UserName>{fakeUserFullName}</UserName>
-            <UserSettingsWrapper>
-                {/* TODO implement user settings admin feature */}
-                <UserSettings />
-            </UserSettingsWrapper>
-        </Flex>
-    </NavBar>
-);
+export const MainNav = () => {
+    const { data, client } = useQuery(SIDEBAR_OPEN);
+    const sidebarClosed = get(data, 'sidebarClosed', false);
 
-const mapStateToProps = state => ({
-    sidebarOpen: sidebarOpenSelector(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-    dispatchSetSidebarOpen: open => dispatch(setSidebarOpen({ open })),
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(MainNav);
+    return (
+        <NavBar>
+            <Flex alignItems="center" justifyContent="center">
+                <MenuWrapper>
+                    <Menu
+                        onClick={() =>
+                            client.writeData({
+                                data: {
+                                    sidebarClosed: !sidebarClosed,
+                                },
+                            })
+                        }
+                    />
+                </MenuWrapper>
+                <AppTitle>{messages.appTitle}</AppTitle>
+            </Flex>
+            <Flex alignItems="center">
+                <UserName>{fakeUserFullName}</UserName>
+                <UserSettingsWrapper>
+                    {/* TODO implement user settings admin feature */}
+                    <UserSettings />
+                </UserSettingsWrapper>
+            </Flex>
+        </NavBar>
+    );
+};

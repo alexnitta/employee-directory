@@ -1,7 +1,7 @@
 {
   "name": "employee-directory-client",
   "version": "0.1.0",
-  "description": "A React / Redux UI for browsing a list of employees at an imaginary company",
+  "description": "A React / GraphQL UI for browsing a list of employees at an imaginary company",
   "dependencies": {
     "@apollo/react-hooks": "^3.1.2",
     "apollo-boost": "^0.4.4",
@@ -11,9 +11,7 @@
     "lodash": "^4.17.15",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-redux": "^7.1.1",
     "react-scripts": "3.2.0",
-    "redux": "^4.0.4",
     "rendition": "^11.21.0"
   },
   "scripts": {

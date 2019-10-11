@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
 import { Flex } from 'rendition';
 import styled from 'styled-components/macro';
+import { useQuery } from '@apollo/react-hooks';
+import get from 'lodash/get';
 
 import { MainContent } from '../MainContent';
 import { MainNav } from '../MainNav';
 import { Sidebar } from '../Sidebar';
-import { sidebarOpenSelector } from '../../redux/selectors';
+import { SIDEBAR_OPEN } from '../../graphql/queries';
 
 const LeftCol = styled.div`
     flex: 1 1 auto;
@@ -17,12 +18,15 @@ const RightCol = styled.div`
     flex: 1 1 auto;
 `;
 
-const AppContainer = ({ sidebarOpen, dispatchSetSidebarOpen }) => {
+export const AppContainer = () => {
+    const { data } = useQuery(SIDEBAR_OPEN);
+    const sidebarClosed = get(data, 'sidebarClosed');
+
     return (
         <Fragment>
             <MainNav />
             <Flex>
-                {sidebarOpen && (
+                {!sidebarClosed && (
                     <LeftCol>
                         <Sidebar />
                     </LeftCol>
@@ -34,9 +38,3 @@ const AppContainer = ({ sidebarOpen, dispatchSetSidebarOpen }) => {
         </Fragment>
     );
 };
-
-const mapStateToProps = state => ({
-    sidebarOpen: sidebarOpenSelector(state),
-});
-
-export default connect(mapStateToProps)(AppContainer);
