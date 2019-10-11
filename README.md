@@ -11,7 +11,7 @@ The app is split into `client` and `server` directories. `client` contains the f
 You'll need to make sure Docker ([Mac](https://docs.docker.com/docker-for-mac/install/)/[Windows](https://docs.docker.com/docker-for-windows/install/)) is installed before you begin.
 
 1. From within `server/`, start up Dgraph and GraphQL: `docker-compose up`
-2. The first time you run the app, Dgraph will be empty. Run the following command to import sample data:
+2. The first time you run the app, Dgraph will be empty. Open a new terminal window, `cd` to `server/` and run the following command to import sample data:
     ```
     docker-compose exec api npm run seed-db
     ```
