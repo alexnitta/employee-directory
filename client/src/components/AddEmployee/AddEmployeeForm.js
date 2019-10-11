@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { Button } from 'rendition';
 import styled from 'styled-components/macro';
-import { connect } from 'react-redux';
-import get from 'lodash/get';
+import { useMutation } from '@apollo/react-hooks';
 
-import { addEmployee } from '../../redux/actionCreators';
+import { ALL_EMPLOYEES } from '../../graphql/queries';
+import { CREATE_EMPLOYEE } from '../../graphql/mutations';
 import { messages } from '../../locale/en_us';
 import {
     DEPARTMENT_ENUM_REVERSE_MAP,
     OFFICE_LOCATION_REVERSE_MAP,
 } from '../../constants';
-import { apiFetcher, apiRequestGenerators } from '../../util';
-
-const { createEmployeeMutation } = apiRequestGenerators;
 
 const StyledForm = styled.form`
     padding: 20px 10px;
@@ -43,36 +40,44 @@ const initialFormState = {
     officeLocation: { enumeration: '', label: '' },
 };
 
-const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
+export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
+    const [createEmployee, { data }] = useMutation(CREATE_EMPLOYEE, {
+        update(
+            cache,
+            {
+                data: { createEmployee },
+            }
+        ) {
+            const { allEmployees } = cache.readQuery({ query: ALL_EMPLOYEES });
+
+            cache.writeQuery({
+                query: ALL_EMPLOYEES,
+                data: { allEmployees: allEmployees.concat([createEmployee]) },
+            });
+        },
+    });
     const [formState, setFormState] = useState(initialFormState);
 
     if (!open) {
         return null;
     }
 
+    if (open && data) {
+        setOpen(false);
+    }
+
     return (
         <StyledForm
             onSubmit={e => {
                 e.preventDefault();
+
                 const input = {
                     ...formState,
                     department: formState.department.enumeration,
                     officeLocation: formState.officeLocation.enumeration,
                 };
-                const body = createEmployeeMutation(input);
-                apiFetcher(body).then(json => {
-                    const employee = get(json, 'data.createEmployee');
 
-                    if (employee) {
-                        dispatchAddEmployee(employee);
-                        setOpen(false);
-                    } else {
-                        // TODO: better error messaging
-                        alert(
-                            'Encountered an error when creating employee. Please try again.'
-                        );
-                    }
-                });
+                createEmployee({ variables: { input } });
             }}
         >
             <label>
@@ -191,12 +196,3 @@ const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
         </StyledForm>
     );
 };
-
-const mapDispatchToProps = dispatch => ({
-    dispatchAddEmployee: employee => dispatch(addEmployee({ employee })),
-});
-
-export default connect(
-    null,
-    mapDispatchToProps
-)(AddEmployeeForm);
