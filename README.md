@@ -48,4 +48,4 @@ In the browser:
 ```
 Warning: componentWillReceiveProps has been renamed, and is not recommended for use.
 ```
-This is also an issue within `rendition`, where the `Table` component is using a deprecated React lifecycle. The issue has been filed [here]](https://github.com/balena-io-modules/rendition/issues/944).
+This is also an issue within `rendition`, where the `Table` component is using a deprecated React lifecycle. The issue has been filed [here](https://github.com/balena-io-modules/rendition/issues/944).
