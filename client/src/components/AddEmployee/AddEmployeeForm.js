@@ -52,7 +52,7 @@ export const AddEmployeeForm = ({ open, setOpen, dispatchAddEmployee }) => {
 
             cache.writeQuery({
                 query: ALL_EMPLOYEES,
-                data: { allEmployees: allEmployees.concat([createEmployee]) },
+                data: { allEmployees: [createEmployee].concat(allEmployees) },
             });
         },
     });
