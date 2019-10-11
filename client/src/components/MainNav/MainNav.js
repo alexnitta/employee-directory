@@ -6,6 +6,7 @@ import styled from 'styled-components/macro';
 
 import { sidebarOpenSelector } from '../../redux/selectors';
 import { setSidebarOpen } from '../../redux/actionCreators';
+import { messages } from '../../locale/en_us';
 
 const MenuWrapper = styled.div`
     padding-left: 20px;
@@ -44,7 +45,7 @@ const MainNav = ({ sidebarOpen, dispatchSetSidebarOpen }) => (
             <MenuWrapper>
                 <Menu onClick={() => dispatchSetSidebarOpen(!sidebarOpen)} />
             </MenuWrapper>
-            <AppTitle>Employee Directory</AppTitle>
+            <AppTitle>{messages.appTitle}</AppTitle>
         </Flex>
         <Flex alignItems="center">
             <UserName>{fakeUserFullName}</UserName>

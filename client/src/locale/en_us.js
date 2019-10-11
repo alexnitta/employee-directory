@@ -3,6 +3,7 @@
 // messages in one place.
 
 export const messages = {
+    appTitle: 'Employee Directory',
     employeeDetails: {
         columns: {
             labels: {
