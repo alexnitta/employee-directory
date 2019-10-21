@@ -16,11 +16,16 @@ const client = new ApolloClient({
     resolvers: {},
 });
 
+const theme = {
+    font: "'Lato', Arial, sans-serif",
+    titleFont: "'Source Sans Pro', Arial, sans-serif",
+};
+
 function App() {
     return (
         <div className="app">
             <ApolloProvider client={client}>
-                <RenditionProvider>
+                <RenditionProvider theme={theme}>
                     <AppContainer />
                 </RenditionProvider>
             </ApolloProvider>
