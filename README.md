@@ -2,6 +2,8 @@
 
 A full stack app for browsing a list of employees at an imaginary company.
 
+![Employee table screenshot](./_docs/employee-table-screenshot.png)
+
 ## Getting started
 
 The app is split into `client` and `server` directories. `client` contains the frontend UI, which consists of a React application using Apollo Client for API calls and state management. `server` contains the backend API, which is built with GraphQL (with Apollo Server) and Dgraph.
