@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/alexnitta/employee-directory#readme",
   "dependencies": {
-    "apollo-server-express": "^2.8.2",
+    "apollo-server-express": "^2.14.2",
     "dgraph-js": "^2.0.2",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
